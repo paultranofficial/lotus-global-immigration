@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: lotus-global-immigration
+    runtime: static
+    staticPublishPath: .
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=604800
