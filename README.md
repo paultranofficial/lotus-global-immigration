@@ -26,6 +26,20 @@ Mở `index.html` bằng trình duyệt, hoặc chạy `npx serve .` rồi vào 
 - **GitHub Pages:** mỗi lần đẩy code lên nhánh `main`, workflow `.github/workflows/pages.yml` tự đăng website. Cần bật một lần: Settings → Pages → Source: **GitHub Actions**.
 - **Render:** trên render.com chọn New → Blueprint, chọn repo này. Render đọc `render.yaml` và tạo Static Site, không cần cấu hình thêm.
 
+## Tên miền
+
+Website chạy tại **https://www.lotusmigrate.com** (GitHub Pages, tên miền đăng ký tại Nhân Hòa).
+
+| Loại | Tên | Giá trị |
+| --- | --- | --- |
+| CNAME | www | paultranofficial.github.io |
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+
+Tên miền được khai báo trong Settings → Pages → Custom domain.
+
 ## Nội dung
 
 Ảnh chân dung là người mẫu minh họa. Mọi nội dung nhắc tới việc làm, thị thực hay định cư phải giữ câu lưu ý minh bạch (xem bộ nhận diện thương hiệu Lotus).
