@@ -70,7 +70,7 @@
     'Dựa trên chương trình cụ thể, không phải lời hứa chung chung':'Based on a specific programme, not vague promises',
     'Trong lúc chờ, bạn có thể chuẩn bị':'While you wait, you can prepare',
     'Bằng cấp, bảng điểm, chứng chỉ tiếng Anh (nếu có) và vài câu hỏi bạn muốn hỏi Lotus.':'Your qualifications, transcripts, English certificates (if any) and a few questions for Lotus.',
-    'Nhắn Zalo Lotus: 090.550.5000':'Message Lotus on Zalo: 090.550.5000',
+    'Nhắn Zalo Lotus: 0879.769.569':'Message Lotus on Zalo: 0879.769.569',
     'Về đầu trang':'Back to top',
     'Lotus không cam kết kết quả thị thực hay định cư. Kết quả phụ thuộc hồ sơ và quy định từng nước.':'Lotus does not guarantee visa or immigration outcomes. Results depend on your profile and each country’s rules.',
     'Hotline / Zalo:':'Hotline / Zalo:',
