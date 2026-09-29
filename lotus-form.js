@@ -2,7 +2,7 @@
 (function () {
   var CRM_ENDPOINT = 'https://onestep-ai-crm.onrender.com/api/v1/leads/intake';
   var CONSENT_VERSION = 'lotus-2026-09';
-  var HOTLINE = '0906.667.665';
+  var HOTLINE = '090.550.5000';
   var TOTAL = 4;
 
   var section = document.getElementById('ket-noi');
@@ -228,7 +228,7 @@
       throw new Error('');
     }).catch(function (ex) {
       var msg = ex && ex.message ? ex.message : t('Chưa gửi được thông tin do lỗi kết nối.', 'We could not send your details due to a connection problem.');
-      showError(msg + ' ' + t('Bạn có thể thử lại, hoặc gọi/Zalo Lotus: ', 'You can try again, or call/Zalo Lotus: ') + '<a href="tel:0906667665">' + HOTLINE + '</a>.');
+      showError(msg + ' ' + t('Bạn có thể thử lại, hoặc gọi/Zalo Lotus: ', 'You can try again, or call/Zalo Lotus: ') + '<a href="tel:0905505000">' + HOTLINE + '</a>.');
     }).then(function () {
       if (timer) clearTimeout(timer);
       sending = false;
