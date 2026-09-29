@@ -3,6 +3,7 @@
   var CRM_ENDPOINT = 'https://onestep-ai-crm.onrender.com/api/v1/leads/intake';
   var CONSENT_VERSION = 'lotus-2026-09';
   var HOTLINE = '0879.769.569';
+  try { HOTLINE = JSON.parse(document.getElementById('lotus-data').textContent).hotline || HOTLINE; HOTLINE = String(HOTLINE).replace(/[<>"'&]/g, ''); } catch (e) {}
   var TOTAL = 4;
 
   var section = document.getElementById('ket-noi');
@@ -228,7 +229,7 @@
       throw new Error('');
     }).catch(function (ex) {
       var msg = ex && ex.message ? ex.message : t('Chưa gửi được thông tin do lỗi kết nối.', 'We could not send your details due to a connection problem.');
-      showError(msg + ' ' + t('Bạn có thể thử lại, hoặc gọi/Zalo Lotus: ', 'You can try again, or call/Zalo Lotus: ') + '<a href="tel:0879769569">' + HOTLINE + '</a>.');
+      showError(msg + ' ' + t('Bạn có thể thử lại, hoặc gọi/Zalo Lotus: ', 'You can try again, or call/Zalo Lotus: ') + '<a href="tel:' + HOTLINE.replace(/[^0-9+]/g, '') + '">' + HOTLINE + '</a>.');
     }).then(function () {
       if (timer) clearTimeout(timer);
       sending = false;
@@ -239,7 +240,11 @@
 
   // Cho các nút khác trên trang chọn sẵn lĩnh vực / điểm đến
   var FIELD_VALUES = ['Chăm sóc sức khỏe (Healthcare)', 'Làm đẹp (Beauty & Wellness)', 'Cần được định hướng'];
-  var DEST_KEYS = { singapore: 'Singapore', usa: 'Mỹ (USA)', canada: 'Canada', europe: 'Châu Âu' };
+  var DEST_KEYS = {};
+  try {
+    var LD = JSON.parse(document.getElementById('lotus-data').textContent).details || {};
+    Object.keys(LD).forEach(function (k) { if (LD[k].destinationValue) DEST_KEYS[k] = LD[k].destinationValue; });
+  } catch (e) {}
   window.lotusForm = {
     preset: function (opts) {
       opts = opts || {};
@@ -248,13 +253,14 @@
         var r = form.querySelector('input[name="field"][value="' + FIELD_VALUES[opts.field] + '"]');
         if (r) r.checked = true;
       }
-      if (opts.destination && DEST_KEYS[opts.destination]) {
+      var destVal = opts.destinationValue || DEST_KEYS[opts.destination];
+      if (destVal) {
         form.querySelectorAll('input[name="destination"]').forEach(function (b) {
-          if (b.value === DEST_KEYS[opts.destination]) b.checked = true;
+          if (b.value === destVal) b.checked = true;
           if (b.dataset.exclusive) b.checked = false;
         });
       }
-      if (current === 1 && one('field')) go(opts.destination ? 3 : 2); else render();
+      if (current === 1 && one('field')) go(destVal ? 3 : 2); else render();
     }
   };
 

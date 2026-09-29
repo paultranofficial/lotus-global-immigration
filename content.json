@@ -1,0 +1,824 @@
+{
+  "_about": "Nội dung website Lotus. Sửa qua trang /admin. *chữ* = in nghiêng, xuống dòng = ngắt dòng.",
+  "site": {
+    "title": {
+      "vi": "Lotus Global Immigration — Vươn xa từ điều bạn Yêu.",
+      "en": "Lotus Global Immigration — Go further with what you Love."
+    },
+    "description": {
+      "vi": "Lotus đồng hành cùng bạn học healthcare và làm đẹp tại Singapore — nền tảng để từng bước hướng tới cơ hội nghề nghiệp tại Mỹ, Canada, Châu Âu và một tương lai rộng mở hơn cho cả gia đình.",
+      "en": "Study healthcare or beauty in Singapore with Lotus — a foundation for working towards careers in the USA, Canada and Europe, and a brighter future for your whole family."
+    },
+    "hotline": "0879.769.569",
+    "zalo": "0879769569",
+    "logo": "assets/logo-lotus-bright.png",
+    "icon": "assets/logo-lotus-bright.png"
+  },
+  "announcement": {
+    "enabled": false,
+    "text": {
+      "vi": "",
+      "en": ""
+    },
+    "link_label": {
+      "vi": "Xem thêm",
+      "en": "Learn more"
+    },
+    "link": "#ket-noi"
+  },
+  "nav": {
+    "about": {
+      "vi": "Về Lotus",
+      "en": "About Lotus"
+    },
+    "fields": {
+      "vi": "Lĩnh vực",
+      "en": "Our fields"
+    },
+    "careers": {
+      "vi": "Nghề nghiệp",
+      "en": "Careers"
+    },
+    "destinations": {
+      "vi": "Điểm đến",
+      "en": "Destinations"
+    },
+    "journey": {
+      "vi": "Hành trình",
+      "en": "Your journey"
+    },
+    "cta": {
+      "vi": "Bắt đầu hành trình",
+      "en": "Start your journey"
+    }
+  },
+  "hero": {
+    "eyebrow": {
+      "vi": "LOTUS GLOBAL IMMIGRATION",
+      "en": "LOTUS GLOBAL IMMIGRATION"
+    },
+    "title": {
+      "vi": "Vươn xa từ\nđiều bạn *Yêu.*",
+      "en": "Go further with\nwhat you *Love.*"
+    },
+    "description": {
+      "vi": "Như đóa sen vươn lên khỏi mặt hồ, mỗi sự nghiệp lớn đều lớn lên từ một gốc rễ vững vàng. Học healthcare hoặc làm đẹp tại Singapore — rồi từng bước hướng tới cơ hội nghề nghiệp quốc tế và một tương lai rộng mở hơn cho cả gia đình.",
+      "en": "Like a lotus rising above the water, every great career grows from strong roots. Study healthcare or beauty in Singapore — then, step by step, work towards international opportunities and a brighter future for your whole family."
+    },
+    "button": {
+      "vi": "Tìm hướng đi dành cho bạn",
+      "en": "Find your path"
+    },
+    "badge": {
+      "vi": "HEALTHCARE & BEAUTY",
+      "en": "HEALTHCARE & BEAUTY"
+    },
+    "places": {
+      "vi": "Singapore · USA · Canada · Châu Âu",
+      "en": "Singapore · USA · Canada · Europe"
+    },
+    "image": {
+      "src": "assets/beauty-aspiration-smile.jpg",
+      "alt": {
+        "vi": "Người mẫu minh họa cô gái trẻ với khát vọng phát triển chuyên môn Beauty & Wellness",
+        "en": "Illustrative model aspiring to a career in Beauty & Wellness"
+      }
+    },
+    "image_top": {
+      "vi": "YOUR BEAUTY. YOUR FUTURE.",
+      "en": "YOUR BEAUTY. YOUR FUTURE."
+    },
+    "image_quote": {
+      "vi": "Từ đam mê làm đẹp.\n*Đến tương lai bạn Yêu.*",
+      "en": "From a passion for beauty.\n*To a future you Love.*"
+    },
+    "image_caption": {
+      "vi": "BEAUTY & WELLNESS\nKHỞI ĐẦU HÀNH TRÌNH CHUYÊN MÔN",
+      "en": "BEAUTY & WELLNESS\nBEGIN YOUR PROFESSIONAL JOURNEY"
+    }
+  },
+  "ribbon": [
+    {
+      "vi": "Tận tâm với con người.",
+      "en": "Devoted to people."
+    },
+    {
+      "vi": "Trân trọng đam mê.",
+      "en": "Honour your passion."
+    },
+    {
+      "vi": "Vươn tới thế giới.",
+      "en": "Reach for the world."
+    }
+  ],
+  "intro": {
+    "eyebrow": {
+      "vi": "01 — TINH THẦN LOTUS",
+      "en": "01 — THE LOTUS SPIRIT"
+    },
+    "title": {
+      "vi": "Sen không chọn nơi mọc.\nNhưng sen luôn chọn *vươn lên.*",
+      "en": "A lotus doesn’t choose where it grows.\nBut it always chooses *to rise.*"
+    },
+    "paragraphs": [
+      {
+        "vi": "Lotus mang tên loài hoa gắn bó nhất với người Việt: bắt rễ trong bùn, vươn qua mặt nước và nở rộ dưới ánh mặt trời. Chúng tôi tin mỗi người trẻ cũng vậy — dù bắt đầu từ đâu, bạn đều có thể lớn lên bằng chính nghề nghiệp mình yêu.",
+        "en": "Lotus is named after the flower closest to Vietnamese hearts: rooted in mud, rising through water, blooming in the sun. We believe every young person can do the same — wherever you begin, you can grow through a career you truly love."
+      },
+      {
+        "vi": "Chúng tôi chọn đồng hành trong hai lĩnh vực mang giá trị chăm sóc con người — healthcare và làm đẹp — tại Singapore, Mỹ, Canada và Châu Âu. Mọi lộ trình đều bắt đầu từ năng lực, mong muốn và hoàn cảnh thật của bạn, không phải từ một khuôn mẫu có sẵn.",
+        "en": "We focus on two fields devoted to caring for people — healthcare and beauty — across Singapore, the USA, Canada and Europe. Every pathway starts from your real abilities, hopes and circumstances, never from a one-size-fits-all template."
+      }
+    ],
+    "image": {
+      "src": "assets/lotus-spirit-smile.jpg",
+      "alt": {
+        "vi": "Người mẫu minh họa nâng niu đóa sen hồng hé nở",
+        "en": "Illustrative model gently holding a pink lotus blossom"
+      }
+    }
+  },
+  "launchpad": {
+    "eyebrow": {
+      "vi": "SINGAPORE — BỆ PHÓNG TOÀN CẦU",
+      "en": "SINGAPORE — YOUR GLOBAL LAUNCHPAD"
+    },
+    "title": {
+      "vi": "Học ở Singapore.\n*Nghĩ xa hơn Singapore.*",
+      "en": "Study in Singapore.\n*Think beyond it.*"
+    },
+    "paragraphs": [
+      {
+        "vi": "Singapore mang đến môi trường học bằng tiếng Anh, chuẩn mực quốc tế, chỉ cách Việt Nam khoảng hai giờ bay. Bằng cấp và tay nghề bạn tích lũy tại đây có thể trở thành bệ phóng để hướng tới vị trí chuyên môn tại Mỹ, Canada và Châu Âu.",
+        "en": "Singapore offers English-language study to international standards, only about two hours’ flight from Vietnam. The qualifications and hands-on skills you build here can become your launchpad towards professional roles in the USA, Canada and Europe."
+      },
+      {
+        "vi": "Và bạn không bước đi một mình. Lotus cùng bạn tìm hiểu hướng làm việc lâu dài và khả năng đưa gia đình cùng đi — dựa trên chương trình phù hợp và điều kiện thực tế của từng thành viên.",
+        "en": "And you won’t walk alone. Lotus helps you explore long-term career options and the possibility of bringing your family — based on suitable programmes and each member’s real eligibility."
+      }
+    ],
+    "button": {
+      "vi": "Vẽ hành trình của gia đình bạn",
+      "en": "Plan your family’s journey"
+    },
+    "route_kicker": {
+      "vi": "YOUR GLOBAL JOURNEY",
+      "en": "YOUR GLOBAL JOURNEY"
+    },
+    "origin_label": {
+      "vi": "HỌC TẬP & NÂNG CAO CHUYÊN MÔN",
+      "en": "STUDY & PROFESSIONAL DEVELOPMENT"
+    },
+    "origin": {
+      "vi": "Singapore",
+      "en": "Singapore"
+    },
+    "origin_sub": {
+      "vi": "Healthcare · Beauty & Wellness",
+      "en": "Healthcare · Beauty & Wellness"
+    },
+    "targets": [
+      {
+        "name": {
+          "vi": "Mỹ (USA)",
+          "en": "USA"
+        },
+        "sub": {
+          "vi": "Mỹ",
+          "en": "United States"
+        }
+      },
+      {
+        "name": {
+          "vi": "Canada",
+          "en": "Canada"
+        },
+        "sub": {
+          "vi": "Bắc Mỹ",
+          "en": "North America"
+        }
+      },
+      {
+        "name": {
+          "vi": "Châu Âu",
+          "en": "Europe"
+        },
+        "sub": {
+          "vi": "Châu Âu",
+          "en": "Europe"
+        }
+      }
+    ],
+    "route_caption": {
+      "vi": "Học tập → Phát triển nghề nghiệp → Tìm hiểu định cư cùng gia đình",
+      "en": "Study → Career development → Explore family immigration"
+    },
+    "notice": {
+      "vi": "Minh bạch là cam kết của Lotus: khả năng ứng tuyển, hành nghề, xin thị thực và định cư phụ thuộc vào bằng cấp cụ thể, việc công nhận chuyên môn, ngoại ngữ và quy định tại điểm đến. Bằng cấp Singapore không tự động bảo đảm việc làm, giấy phép hành nghề hoặc quyền định cư cho bạn và gia đình.",
+      "en": "Transparency is our promise: eligibility for employment, professional practice, visas and immigration depends on your specific qualifications, professional recognition, language skills and destination requirements. A Singapore qualification does not automatically guarantee employment, professional licensing or immigration rights for you or your family."
+    },
+    "links_title": {
+      "vi": "Tham khảo yêu cầu công nhận chuyên môn",
+      "en": "Professional recognition requirements"
+    },
+    "links": [
+      {
+        "label": {
+          "vi": "Mỹ — đánh giá bằng cấp y tế",
+          "en": "USA — healthcare credential assessment"
+        },
+        "url": "https://www.cgfns.org/services/certification/visascreen-visa-credentials-assessment/"
+      },
+      {
+        "label": {
+          "vi": "Canada — công nhận bằng cấp",
+          "en": "Canada — foreign credential recognition"
+        },
+        "url": "https://www.canada.ca/en/employment-social-development/programs/foreign-credential-recognition.html"
+      },
+      {
+        "label": {
+          "vi": "EU — ngành nghề có điều kiện",
+          "en": "EU — regulated professions"
+        },
+        "url": "https://europa.eu/youreurope/citizens/work/professional-qualifications/regulated-professions/"
+      }
+    ]
+  },
+  "fields": {
+    "eyebrow": {
+      "vi": "02 — LĨNH VỰC CHUYÊN SÂU",
+      "en": "02 — OUR SPECIALIST FIELDS"
+    },
+    "title": {
+      "vi": "Chọn đam mê.\n*Mở lối tương lai.*",
+      "en": "Choose your passion.\n*Shape your future.*"
+    },
+    "subtitle": {
+      "vi": "Hai lĩnh vực. Nhiều hướng phát triển.\nMột hành trình được xây dựng từ bạn.",
+      "en": "Two fields. Many paths to grow.\nOne journey shaped around you."
+    },
+    "items": [
+      {
+        "key": "healthcare",
+        "theme": "healthcare",
+        "kicker": {
+          "vi": "01 / HEALTHCARE",
+          "en": "01 / HEALTHCARE"
+        },
+        "symbol": "✚",
+        "title": {
+          "vi": "Chăm sóc\nsức khỏe",
+          "en": "Care\n& healthcare"
+        },
+        "description": {
+          "vi": "Dành cho người có trái tim muốn chữa lành. Học tập và trưởng thành trong điều dưỡng, chăm sóc và hỗ trợ sức khỏe — những nghề mà xã hội nào cũng cần.",
+          "en": "For those with a heart for healing. Study and grow in nursing, care and health support — work that every society needs."
+        },
+        "tags": [
+          {
+            "vi": "Điều dưỡng",
+            "en": "Nursing"
+          },
+          {
+            "vi": "Chăm sóc",
+            "en": "Care"
+          },
+          {
+            "vi": "Hỗ trợ sức khỏe",
+            "en": "Healthcare support"
+          }
+        ],
+        "button": {
+          "vi": "Tìm hiểu hướng phát triển",
+          "en": "Explore your development path"
+        },
+        "image": {
+          "src": "assets/healthcare-portrait.jpg",
+          "alt": {
+            "vi": "Người mẫu minh họa chuyên viên chăm sóc sức khỏe",
+            "en": "Illustrative healthcare professional model"
+          }
+        },
+        "image_label": {
+          "vi": "CARE WITH PURPOSE",
+          "en": "CARE WITH PURPOSE"
+        },
+        "form_field": 0,
+        "detail": {
+          "label": {
+            "vi": "HEALTHCARE",
+            "en": "HEALTHCARE"
+          },
+          "title": {
+            "vi": "Phát triển từ sự tận tâm.",
+            "en": "Grow through dedication."
+          },
+          "description": {
+            "vi": "Khám phá hướng học tập và nghề nghiệp trong lĩnh vực chăm sóc sức khỏe. Buổi trao đổi bắt đầu từ nền tảng hiện tại và vai trò bạn muốn theo đuổi.",
+            "en": "Explore education and career paths in healthcare. We begin with your current background and the role you hope to pursue."
+          },
+          "items": [
+            {
+              "vi": "Bằng cấp, chuyên ngành và kinh nghiệm chăm sóc hiện có.",
+              "en": "Your current qualifications, specialisation and care experience."
+            },
+            {
+              "vi": "Mục tiêu: học ngành mới, nâng cao chuyên môn hoặc tìm hiểu hướng nghề nghiệp.",
+              "en": "Your goal: enter a new field, deepen your expertise or explore career options."
+            },
+            {
+              "vi": "Những yêu cầu về ngôn ngữ, công nhận bằng cấp và hành nghề cần kiểm tra theo nơi đến.",
+              "en": "Language, qualification recognition and licensing requirements to check at your destination."
+            }
+          ]
+        }
+      },
+      {
+        "key": "beauty",
+        "theme": "beauty",
+        "kicker": {
+          "vi": "02 / BEAUTY & WELLNESS",
+          "en": "02 / BEAUTY & WELLNESS"
+        },
+        "symbol": "✧",
+        "title": {
+          "vi": "Làm đẹp &\nchăm sóc bản thân",
+          "en": "Beauty &\nwellness"
+        },
+        "description": {
+          "vi": "Dành cho người nhìn thấy vẻ đẹp trong từng chi tiết. Biến sự tinh tế và đam mê làm đẹp thành tay nghề chuyên nghiệp bạn mang theo suốt đời.",
+          "en": "For those who see beauty in every detail. Turn your eye and passion for beauty into professional skills you carry for life."
+        },
+        "tags": [
+          {
+            "vi": "Chăm sóc da",
+            "en": "Skincare"
+          },
+          {
+            "vi": "Spa & wellness",
+            "en": "Spa & wellness"
+          },
+          {
+            "vi": "Dịch vụ làm đẹp",
+            "en": "Beauty services"
+          }
+        ],
+        "button": {
+          "vi": "Khám phá hành trình nghề nghiệp",
+          "en": "Explore your career journey"
+        },
+        "image": {
+          "src": "assets/skincare-japanese.jpg",
+          "alt": {
+            "vi": "Người mẫu minh họa chuyên viên làm đẹp",
+            "en": "Illustrative beauty professional model"
+          }
+        },
+        "image_label": {
+          "vi": "BEAUTY WITH PASSION",
+          "en": "BEAUTY WITH PASSION"
+        },
+        "form_field": 1,
+        "detail": {
+          "label": {
+            "vi": "BEAUTY & WELLNESS",
+            "en": "BEAUTY & WELLNESS"
+          },
+          "title": {
+            "vi": "Để đam mê thành chuyên môn.",
+            "en": "Turn passion into expertise."
+          },
+          "description": {
+            "vi": "Tìm hiểu hướng học tập và nâng cao tay nghề trong chăm sóc da, spa, wellness và dịch vụ làm đẹp.",
+            "en": "Explore education and skills development in skincare, spa, wellness and beauty services."
+          },
+          "items": [
+            {
+              "vi": "Kỹ năng, chứng chỉ và kinh nghiệm làm đẹp hiện có.",
+              "en": "Your current beauty skills, certifications and experience."
+            },
+            {
+              "vi": "Lĩnh vực bạn muốn phát triển và mục tiêu học tập.",
+              "en": "The area you want to develop and your learning goals."
+            },
+            {
+              "vi": "Nội dung đào tạo, phạm vi công việc và yêu cầu tại điểm đến cần được xem xét riêng.",
+              "en": "Training content, scope of practice and destination requirements must be assessed individually."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "careers": {
+    "eyebrow": {
+      "vi": "NGHỀ NGHIỆP — BẮT ĐẦU TỪ ĐAM MÊ",
+      "en": "CAREERS — FOLLOW YOUR PASSION"
+    },
+    "title": {
+      "vi": "Bạn muốn trở thành\n*ai trong tương lai?*",
+      "en": "Who do you want\n*to become?*"
+    },
+    "subtitle": {
+      "vi": "Khám phá lĩnh vực phù hợp với bạn.\nCùng Lotus định hình bước đi tiếp theo.",
+      "en": "Find the field that suits you.\nShape your next step with Lotus."
+    },
+    "note": {
+      "vi": "Nhóm nghề để tìm hiểu và định hướng, không phải tin tuyển dụng đang mở. Ảnh người mẫu minh họa.",
+      "en": "Career fields for exploration and guidance, not current job vacancies. Images feature illustrative models."
+    },
+    "button": {
+      "vi": "Chọn hướng quan tâm ↗",
+      "en": "Choose this path ↗"
+    },
+    "items": [
+      {
+        "group": "healthcare",
+        "kicker": {
+          "vi": "HEALTHCARE",
+          "en": "HEALTHCARE"
+        },
+        "title": {
+          "vi": "Điều dưỡng & chăm sóc",
+          "en": "Nursing & care"
+        },
+        "description": {
+          "vi": "Mang sự bình an đến bên người bệnh, người cao tuổi và những gia đình cần được chăm sóc.",
+          "en": "Bring comfort to patients, older people and families who need care."
+        },
+        "image": {
+          "src": "assets/nurse-korean.jpg",
+          "alt": {
+            "vi": "Người mẫu nữ minh họa ngành điều dưỡng",
+            "en": "Illustrative female nursing model"
+          }
+        }
+      },
+      {
+        "group": "beauty",
+        "kicker": {
+          "vi": "BEAUTY",
+          "en": "BEAUTY"
+        },
+        "title": {
+          "vi": "Chăm sóc da",
+          "en": "Skincare"
+        },
+        "description": {
+          "vi": "Giúp mỗi người tự tin hơn với làn da của mình — bằng kiến thức và đôi tay chuyên nghiệp.",
+          "en": "Help people feel confident in their own skin — with real knowledge and professional hands."
+        },
+        "image": {
+          "src": "assets/skincare-japanese.jpg",
+          "alt": {
+            "vi": "Người mẫu nữ minh họa chuyên viên chăm sóc da",
+            "en": "Illustrative female skincare professional model"
+          }
+        }
+      },
+      {
+        "group": "beauty",
+        "kicker": {
+          "vi": "BEAUTY & WELLNESS",
+          "en": "BEAUTY & WELLNESS"
+        },
+        "title": {
+          "vi": "Spa & wellness",
+          "en": "Spa & wellness"
+        },
+        "description": {
+          "vi": "Tạo nên những khoảng lặng thư thái, nơi cơ thể và tâm trí được chăm sóc trọn vẹn.",
+          "en": "Create moments of calm where body and mind are fully cared for."
+        },
+        "image": {
+          "src": "assets/wellness-vietnamese.jpg",
+          "alt": {
+            "vi": "Người mẫu nữ minh họa chuyên viên spa và wellness",
+            "en": "Illustrative female spa and wellness professional model"
+          }
+        }
+      }
+    ]
+  },
+  "destinations": {
+    "eyebrow": {
+      "vi": "03 — CHÂN TRỜI CỦA BẠN",
+      "en": "03 — YOUR NEXT HORIZON"
+    },
+    "title": {
+      "vi": "Điểm đến mới.\n*Phiên bản mới của bạn.*",
+      "en": "A new destination.\n*A new chapter for you.*"
+    },
+    "subtitle": {
+      "vi": "Bốn thị trường trọng tâm của Lotus.\nKhởi đầu bằng việc tìm hiểu sự phù hợp.",
+      "en": "Four key destinations for Lotus.\nStart by exploring what fits you."
+    },
+    "action": {
+      "vi": "Khám phá điểm đến",
+      "en": "Explore this destination"
+    },
+    "items": [
+      {
+        "key": "singapore",
+        "kicker": {
+          "vi": "01 — CHÂU Á",
+          "en": "01 — ASIA"
+        },
+        "name": {
+          "vi": "Singapore",
+          "en": "Singapore"
+        },
+        "image": {
+          "src": "assets/singapore.jpg",
+          "alt": {
+            "vi": "Marina Bay, Singapore",
+            "en": "Marina Bay, Singapore"
+          }
+        },
+        "form_value": "Singapore",
+        "detail": {
+          "label": {
+            "vi": "ĐIỂM ĐẾN / 01",
+            "en": "DESTINATION / 01"
+          },
+          "title": {
+            "vi": "Singapore",
+            "en": "Singapore"
+          },
+          "description": {
+            "vi": "Một trong bốn thị trường trọng tâm của Lotus dành cho hành trình healthcare và làm đẹp.",
+            "en": "One of Lotus’s four key destinations for healthcare and beauty journeys."
+          },
+          "items": [
+            {
+              "vi": "Xác định ngành và mục tiêu học tập hoặc nghề nghiệp.",
+              "en": "Identify your field and education or career goals."
+            },
+            {
+              "vi": "Trao đổi về khả năng ngoại ngữ, ngân sách và thời gian dự kiến.",
+              "en": "Discuss your language skills, budget and planned timeframe."
+            },
+            {
+              "vi": "Tìm hiểu chương trình cụ thể trước khi quyết định.",
+              "en": "Explore specific programmes before deciding."
+            }
+          ]
+        }
+      },
+      {
+        "key": "usa",
+        "kicker": {
+          "vi": "02 — UNITED STATES",
+          "en": "02 — UNITED STATES"
+        },
+        "name": {
+          "vi": "Mỹ · USA",
+          "en": "United States"
+        },
+        "image": {
+          "src": "assets/usa.jpg",
+          "alt": {
+            "vi": "Tượng Nữ thần Tự do và thành phố New York, Mỹ",
+            "en": "Statue of Liberty and New York City, USA"
+          }
+        },
+        "form_value": "Mỹ (USA)",
+        "detail": {
+          "label": {
+            "vi": "ĐIỂM ĐẾN / USA",
+            "en": "DESTINATION / USA"
+          },
+          "title": {
+            "vi": "Mỹ · USA",
+            "en": "United States"
+          },
+          "description": {
+            "vi": "Từ nền tảng học tập tại Singapore, tìm hiểu hướng phát triển nghề nghiệp healthcare hoặc làm đẹp tại Mỹ.",
+            "en": "Explore healthcare or beauty career paths in the USA, building on your education in Singapore."
+          },
+          "items": [
+            {
+              "vi": "Đánh giá bằng cấp, ngoại ngữ và yêu cầu cấp phép theo nghề và tiểu bang.",
+              "en": "Assess qualifications, language skills and licensing requirements for the occupation and state."
+            },
+            {
+              "vi": "Tìm hiểu công việc phù hợp và điều kiện xin thị thực riêng biệt.",
+              "en": "Explore suitable jobs and visa eligibility as separate considerations."
+            },
+            {
+              "vi": "Xem xét khả năng định cư và hồ sơ người thân theo chương trình cụ thể; không tự động phát sinh từ bằng cấp.",
+              "en": "Review immigration and family-member eligibility under a specific programme; these rights do not follow automatically from a qualification."
+            }
+          ]
+        }
+      },
+      {
+        "key": "canada",
+        "kicker": {
+          "vi": "03 — BẮC MỸ",
+          "en": "03 — NORTH AMERICA"
+        },
+        "name": {
+          "vi": "Canada",
+          "en": "Canada"
+        },
+        "image": {
+          "src": "assets/canada.jpg",
+          "alt": {
+            "vi": "Hồ nước và dãy núi tại Canada",
+            "en": "Lake and mountains in Canada"
+          }
+        },
+        "form_value": "Canada",
+        "detail": {
+          "label": {
+            "vi": "ĐIỂM ĐẾN / 02",
+            "en": "DESTINATION / 02"
+          },
+          "title": {
+            "vi": "Canada",
+            "en": "Canada"
+          },
+          "description": {
+            "vi": "Khởi đầu kế hoạch tại Canada bằng việc xác định lĩnh vực, địa phương và mục tiêu dài hạn của bạn.",
+            "en": "Start planning for Canada by identifying your field, location and long-term goals."
+          },
+          "items": [
+            {
+              "vi": "Chọn lĩnh vực healthcare hoặc beauty phù hợp với nền tảng hiện có.",
+              "en": "Choose a healthcare or beauty field suited to your background."
+            },
+            {
+              "vi": "Làm rõ tỉnh bang, ngôn ngữ và chương trình quan tâm.",
+              "en": "Identify your preferred province, language and programme."
+            },
+            {
+              "vi": "Xem xét riêng mục tiêu học tập, nghề nghiệp và định cư.",
+              "en": "Consider education, career and immigration goals separately."
+            }
+          ]
+        }
+      },
+      {
+        "key": "europe",
+        "kicker": {
+          "vi": "04 — CHÂU ÂU",
+          "en": "04 — EUROPE"
+        },
+        "name": {
+          "vi": "Châu Âu",
+          "en": "Europe"
+        },
+        "image": {
+          "src": "assets/europe.jpg",
+          "alt": {
+            "vi": "Paris — hình ảnh minh họa điểm đến Châu Âu",
+            "en": "Paris — an illustration of European destinations"
+          }
+        },
+        "form_value": "Châu Âu",
+        "detail": {
+          "label": {
+            "vi": "ĐIỂM ĐẾN / 03",
+            "en": "DESTINATION / 03"
+          },
+          "title": {
+            "vi": "Châu Âu",
+            "en": "Europe"
+          },
+          "description": {
+            "vi": "Châu Âu gồm nhiều quốc gia với ngôn ngữ và lộ trình khác nhau. Lotus bắt đầu từ việc giúp bạn làm rõ điểm đến mong muốn.",
+            "en": "Europe includes many countries with different languages and pathways. Lotus begins by helping you identify your preferred destination."
+          },
+          "items": [
+            {
+              "vi": "Xác định quốc gia và ngôn ngữ bạn muốn theo học hoặc làm việc.",
+              "en": "Identify the country and language in which you want to study or work."
+            },
+            {
+              "vi": "Trao đổi về chuyên ngành, bằng cấp và kinh nghiệm hiện có.",
+              "en": "Discuss your specialisation, qualifications and current experience."
+            },
+            {
+              "vi": "Lập danh sách chương trình và yêu cầu cần xác minh cho quốc gia cụ thể.",
+              "en": "List the programmes and requirements to verify for your chosen country."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "journey": {
+    "eyebrow": {
+      "vi": "04 — CÙNG BẠN TỪ BƯỚC ĐẦU",
+      "en": "04 — WITH YOU FROM THE START"
+    },
+    "title": {
+      "vi": "Rõ hướng đi.\n*Vững từng bước.*",
+      "en": "A clear direction.\n*Confidence at every step.*"
+    },
+    "subtitle": {
+      "vi": "Một kế hoạch tốt bắt đầu bằng sự thấu hiểu,\nthông tin rõ ràng và chuẩn bị phù hợp.",
+      "en": "A good plan begins with understanding,\nclear information and thoughtful preparation."
+    },
+    "steps": [
+      {
+        "title": {
+          "vi": "Lắng nghe",
+          "en": "Listen"
+        },
+        "text": {
+          "vi": "Chúng tôi bắt đầu bằng việc hiểu bạn: mục tiêu, kinh nghiệm, nền tảng học tập và hoàn cảnh gia đình.",
+          "en": "We begin by understanding you: your goals, experience, education and family situation."
+        }
+      },
+      {
+        "title": {
+          "vi": "Định hướng",
+          "en": "Explore"
+        },
+        "text": {
+          "vi": "Cùng so sánh ngành học, điểm đến và những điều cần cân nhắc — rõ ràng, trung thực, trước khi bạn quyết định.",
+          "en": "Together we compare fields, destinations and what to weigh up — clearly and honestly, before you decide."
+        }
+      },
+      {
+        "title": {
+          "vi": "Chuẩn bị",
+          "en": "Prepare"
+        },
+        "text": {
+          "vi": "Lập danh sách hồ sơ, kỹ năng và ngoại ngữ cần chuẩn bị cho hướng đi bạn đã chọn.",
+          "en": "List the documents, skills and language requirements for your chosen path."
+        }
+      },
+      {
+        "title": {
+          "vi": "Tiến bước",
+          "en": "Move forward"
+        },
+        "text": {
+          "vi": "Rà soát kế hoạch và cùng bạn bước tiếp — dựa trên chương trình cụ thể, không phải lời hứa chung chung.",
+          "en": "Review your plan and take the next step together — based on a specific programme, not vague promises."
+        }
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": {
+      "vi": "NHỮNG ĐIỀU BẠN CÓ THỂ ĐANG BĂN KHOĂN",
+      "en": "QUESTIONS YOU MAY HAVE"
+    },
+    "items": [
+      {
+        "q": {
+          "vi": "Tôi chưa có kinh nghiệm trong ngành, nên bắt đầu từ đâu?",
+          "en": "Where should I start if I have no experience?"
+        },
+        "a": {
+          "vi": "Hãy bắt đầu bằng việc ghi lại trình độ học vấn, khả năng ngoại ngữ và mục tiêu của bạn. Đây là cơ sở để trao đổi về hướng học tập hoặc nâng cao kỹ năng phù hợp.",
+          "en": "Start by noting your education, language skills and goals. These provide a basis for discussing suitable study or skills-development options."
+        }
+      },
+      {
+        "q": {
+          "vi": "Tôi nên chọn Singapore, Mỹ, Canada hay Châu Âu?",
+          "en": "Should I choose Singapore, the USA, Canada or Europe?"
+        },
+        "a": {
+          "vi": "Việc lựa chọn nên dựa trên ngành bạn muốn theo đuổi, ngân sách, ngôn ngữ và kế hoạch dài hạn. Với Châu Âu, cần xác định quốc gia cụ thể trước khi đánh giá chương trình.",
+          "en": "Your choice should reflect your preferred field, budget, language skills and long-term plans. For Europe, identify a specific country before evaluating programmes."
+        }
+      },
+      {
+        "q": {
+          "vi": "Tôi cần chuẩn bị gì trước buổi tư vấn?",
+          "en": "What should I prepare before a consultation?"
+        },
+        "a": {
+          "vi": "Bằng cấp hiện có, kinh nghiệm học tập hoặc làm việc, trình độ ngoại ngữ, ngân sách dự kiến và danh sách câu hỏi. Bạn có thể điền form tư vấn phía trên để chuyên viên chuẩn bị trước.",
+          "en": "Prepare your qualifications, study or work experience, language level, estimated budget and questions. You can fill in the consultation form above so our advisers can prepare."
+        }
+      }
+    ]
+  },
+  "footer": {
+    "tagline": {
+      "vi": "Chăm sóc hôm nay.\n*Kiến tạo ngày mai.*",
+      "en": "Care today.\n*Shape tomorrow.*"
+    },
+    "copyright": {
+      "vi": "© 2026 Lotus Global Immigration",
+      "en": "© 2026 Lotus Global Immigration"
+    },
+    "places": {
+      "vi": "Singapore · USA · Canada · Châu Âu",
+      "en": "Singapore · USA · Canada · Europe"
+    }
+  },
+  "dialog_cta": {
+    "vi": "Chuẩn bị trao đổi với Lotus ↗",
+    "en": "Prepare to speak with Lotus ↗"
+  }
+}

@@ -2,24 +2,45 @@
 
 Website giới thiệu Lotus Global Immigration: học healthcare và làm đẹp tại Singapore, làm nền tảng hướng tới nghề nghiệp tại Mỹ, Canada và Châu Âu.
 
-Website tĩnh (HTML, CSS, JavaScript thuần), không cần build. Có hai ngôn ngữ Việt và Anh (nút VI/EN, hoặc thêm `?lang=en` vào đường dẫn).
+Website tĩnh (HTML, CSS, JavaScript thuần). Toàn bộ chữ và ảnh nằm trong `content.json`; trang `index.html` (tiếng Việt), `en/index.html` (tiếng Anh) và `chinh-sach-du-lieu.html` được dựng từ đó. Link cũ dạng `?lang=en` tự chuyển sang `/en/`.
+
+## Sửa nội dung: trang quản trị
+
+Vào **https://www.lotusmigrate.com/admin/** và đăng nhập bằng GitHub token (hướng dẫn tạo token có ngay trên trang). Ở đó có thể:
+
+- sửa chữ và tiêu đề, cả tiếng Việt lẫn tiếng Anh;
+- tải ảnh mới lên (ảnh tự thu nhỏ, lưu vào `assets/uploads/`);
+- đổi hotline/Zalo, bật tắt thanh thông báo trên cùng;
+- thêm, xóa, đổi thứ tự lĩnh vực, nghề, điểm đến, câu hỏi, khẩu hiệu…
+
+Mọi thay đổi hiện ngay ở khung xem trước. Bấm **Xuất bản** thì trang quản trị ghi `content.json`, các trang HTML và ảnh mới thành một commit lên `main`; GitHub Pages cập nhật website sau 1–2 phút. Bản nháp chưa xuất bản được giữ trong trình duyệt.
+
+Token là của riêng từng người, chỉ lưu trong trình duyệt, không nằm trong repo. Token nên giới hạn đúng repo này với quyền *Contents: Read and write*.
 
 ## Cấu trúc
 
 | Tệp | Vai trò |
 | --- | --- |
-| `index.html` | Trang chính |
-| `style.css`, `layout-v2.css`, `layout-v3.css`, `layout-v5.css`, `lotus-spirit.css`, `languages.css` | Giao diện, theo thứ tự nạp |
-| `app-v3.js` | Menu, hộp thoại chi tiết, form ghi chú tư vấn |
-| `layout-v2.js` | Mục Nghề nghiệp và bộ lọc |
-| `layout-v4.js` | Ảnh nghề, thanh tiến độ cuộn, hiệu ứng |
-| `notes.js` | Tạo và tải ghi chú tư vấn |
-| `languages.js` | Bản dịch tiếng Anh và nút VI/EN |
-| `assets/` | Logo và ảnh (đã nén cho web) |
+| `content.json` | Toàn bộ nội dung (chữ VI/EN, ảnh, hotline, thông báo) |
+| `render.js` | Dựng HTML từ `content.json`; dùng chung cho trang quản trị và `build.cjs` |
+| `build.cjs` | Dựng lại trang trên máy: `node build.cjs` |
+| `admin/index.html` | Trang quản trị nội dung |
+| `index.html`, `en/index.html`, `chinh-sach-du-lieu.html` | Trang được dựng ra — **không sửa tay**, sửa `content.json` rồi dựng lại |
+| `style.css`, `layout-v2.css`, `layout-v3.css`, `layout-v5.css`, `lotus-spirit.css`, `languages.css`, `lotus-form.css` | Giao diện, theo thứ tự nạp |
+| `app-v3.js` | Menu, hộp thoại chi tiết (đọc dữ liệu từ `#lotus-data` trong trang) |
+| `layout-v2.js` | Bộ lọc nghề nghiệp, nút tắt chuyển động, hiệu ứng hiện dần |
+| `layout-v4.js` | Thanh tiến độ cuộn, hiệu ứng thẻ |
+| `lotus-form.js` | Form tư vấn 4 bước, gửi về onestep-ai-crm |
+| `languages.js` | Nút VI/EN (chuyển giữa `/` và `/en/`) |
+| `assets/` | Logo và ảnh; ảnh tải lên từ trang quản trị nằm trong `assets/uploads/` |
+
+Trong ô chữ, đặt chữ giữa hai dấu `*sao*` để in nghiêng màu hồng; xuống dòng trong tiêu đề sẽ thành ngắt dòng.
+
+Khi sửa giao diện của một mục (thẻ HTML, class), sửa trong `render.js`, chạy `node build.cjs` rồi commit cả trang đã dựng.
 
 ## Xem trên máy
 
-Mở `index.html` bằng trình duyệt, hoặc chạy `npx serve .` rồi vào địa chỉ hiện ra.
+Chạy `npx serve .` (hoặc `python3 -m http.server`) rồi vào địa chỉ hiện ra. Trang quản trị chạy được ở máy nhưng khi xuất bản sẽ ghi thẳng lên GitHub.
 
 ## Đưa lên mạng
 
