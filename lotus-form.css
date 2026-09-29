@@ -1,0 +1,156 @@
+/* Lotus — form tư vấn 4 bước (gửi về OneStep CRM) */
+.lf-section{--lf-ink:#362936;--lf-muted:#746774;--lf-line:#f0dfe7;--lf-tint:#fff0f6;--lf-rose:#ffd9e9;--lf-deep:#c42569;--lf-lotus:#e03482;--lf-text-pink:#aa285e;--lf-mud:#5f0845;--lf-petal:#fe73a4;
+  max-width:1280px;margin:0 auto;padding:100px 5%;color:var(--lf-ink);font-family:'Be Vietnam Pro',Arial,sans-serif}
+.lf-section *{box-sizing:border-box}
+.lf-section [hidden]{display:none!important}
+.lf-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 25px 70px #c5397912;border:1px solid var(--lf-line)}
+.lf-side{position:relative;min-height:640px;background:var(--lf-mud);color:#fff;overflow:hidden}
+.lf-side-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.lf-side::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#5f084500 28%,#5f0845eb 66%)}
+.lf-side-copy{position:absolute;left:44px;right:44px;bottom:44px;z-index:1;display:flex;flex-direction:column;gap:16px}
+.lf-side h2{margin:0;font:500 38px/1.2 'Playfair Display',Georgia,serif;color:#fff}
+.lf-side h2 em{color:var(--lf-petal)}
+.lf-eyebrow{margin:0;font:600 12px/1.4 'Be Vietnam Pro',Arial,sans-serif;letter-spacing:2px;color:var(--lf-text-pink)}
+.lf-eyebrow-light{color:var(--lf-petal)}
+.lf-trust{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.5px;line-height:1.5;color:#f3cddd}
+.lf-trust li{display:flex;gap:10px}
+.lf-trust li::before{content:'✓';color:var(--lf-petal);font-weight:600}
+.lf-hotline{margin:4px 0 0;padding-top:14px;border-top:1px solid #ffffff33;font-size:14px;color:#f3cddd}
+.lf-hotline a{color:#fff;font-weight:600;text-decoration:none;border-bottom:1px solid var(--lf-petal)}
+
+.lf-main{padding:44px 56px 40px;display:flex;flex-direction:column;gap:26px;min-width:0}
+.lf-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.lf-progress{display:flex;align-items:center;gap:12px}
+.lf-petals{width:58px;height:36px}
+.lf-petal{fill:var(--lf-rose);transition:fill .4s}
+.lf-petal.is-on{fill:var(--lf-lotus)}
+.lf-count{font-size:13px;color:var(--lf-muted)}
+.lf-count b{color:var(--lf-ink)}
+.lf-steps{list-style:none;margin:0;padding:0;display:flex;gap:20px;font-size:13px;color:var(--lf-muted)}
+.lf-steps li{padding-bottom:6px;border-bottom:2px solid transparent;counter-increment:lf}
+.lf-steps{counter-reset:lf}
+.lf-steps li::before{content:counter(lf) ' '}
+.lf-steps li[aria-current="step"]{color:var(--lf-text-pink);font-weight:600;border-color:var(--lf-deep)}
+.lf-steps li.is-done{color:var(--lf-ink)}
+
+#lotus-form{display:flex;flex-direction:column;gap:22px;flex-grow:1;padding:0;border:0;background:none;box-shadow:none;border-radius:0}
+.lf-step{margin:0;padding:0;border:0;min-width:0;display:flex;flex-direction:column;gap:18px}
+.lf-q{display:block;margin:0;padding:0;font:500 38px/1.2 'Playfair Display',Georgia,serif;color:var(--lf-ink)}
+.lf-q em{color:var(--lf-text-pink)}
+.lf-help{margin:-6px 0 0;font-size:15px;color:var(--lf-muted)}
+
+/* hidden native inputs, visible focus on the card */
+.lf-field-card input,.lf-dest input,.lf-chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.lf-tick{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:1.5px solid #ffffffcc;background:#ffffff66;z-index:2;transition:background .2s,border-color .2s}
+input:checked~.lf-tick{background:var(--lf-deep) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10.5l4 4 8-9'/%3E%3C/svg%3E") center/15px no-repeat;border-color:var(--lf-deep)}
+
+.lf-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lf-field-card{position:relative;display:flex;flex-direction:column;border:1px solid var(--lf-line);border-radius:18px;background:#fff;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}
+.lf-field-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px #c33a7414}
+.lf-field-card img{width:100%;height:170px;object-fit:cover;object-position:center 22%;display:block}
+.lf-fc-mark{height:170px;display:flex;align-items:center;justify-content:center;background:var(--lf-rose)}
+.lf-fc-mark img{width:96px;height:auto}
+.lf-fc-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 20px}
+.lf-fc-kicker{font-size:10.5px;font-weight:600;letter-spacing:2px;color:var(--lf-text-pink)}
+.lf-fc-title{font:500 22px/1.25 'Playfair Display',Georgia,serif}
+.lf-fc-desc{font-size:13.5px;line-height:1.55;color:var(--lf-muted)}
+.lf-field-card:has(input:checked){border:2px solid var(--lf-deep);background:var(--lf-tint);box-shadow:0 18px 45px #c33a741f}
+.lf-field-card:has(input:focus-visible),.lf-dest:has(input:focus-visible),.lf-chip:has(input:focus-visible){outline:2px solid var(--lf-deep);outline-offset:3px}
+
+.lf-dests{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.lf-dest{position:relative;height:190px;border-radius:16px;overflow:hidden;cursor:pointer;background:var(--lf-mud);border:3px solid transparent;transition:border-color .2s}
+.lf-dest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.lf-dest:hover img{transform:scale(1.05)}
+.lf-dest::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#5f084500 40%,#5f0845d9)}
+.lf-dest-name{position:absolute;left:14px;bottom:12px;z-index:2;color:#fff;font:500 22px/1.2 'Playfair Display',Georgia,serif}
+.lf-dest:has(input:checked){border-color:var(--lf-deep)}
+.lf-undecided{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px dashed #e5cbd7;border-radius:50px;font-size:14px;cursor:pointer}
+.lf-undecided input{width:18px;height:18px;accent-color:var(--lf-deep)}
+
+.lf-group{display:flex;flex-direction:column;gap:10px}
+.lf-group-label{margin:0;font-size:14px;font-weight:600}
+.lf-chips{display:flex;flex-wrap:wrap;gap:8px}
+.lf-chip{position:relative;cursor:pointer}
+.lf-chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 17px;border:1px solid var(--lf-line);border-radius:50px;background:#fff;font-size:14px;font-weight:500;transition:background .2s,border-color .2s,color .2s}
+.lf-chip:hover span{border-color:var(--lf-deep)}
+.lf-chip input:checked+span{background:var(--lf-deep);border-color:var(--lf-deep);color:#fff}
+
+.lf-summary{margin:0;padding:12px 16px;border-radius:14px;background:var(--lf-tint);font-size:13px;color:var(--lf-muted)}
+.lf-summary b{color:var(--lf-text-pink);font-weight:600}
+.lf-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px}
+.lf-input{display:flex;flex-direction:column;gap:7px}
+.lf-input-full{grid-column:1/-1}
+.lf-input label{font-size:13px;font-weight:500}
+.lf-optional{font-weight:400;color:var(--lf-muted)}
+.lf-input input{min-height:52px;padding:0 16px;border:1px solid #e8d3dd;border-radius:12px;background:#fff;color:var(--lf-ink);font:400 16px/1.2 'Be Vietnam Pro',Arial,sans-serif;width:100%}
+.lf-input input:focus{outline:2px solid var(--lf-deep);outline-offset:1px;border-color:var(--lf-deep)}
+.lf-input input[aria-invalid="true"]{border-color:#b3261e;background:#fff7f7}
+.lf-input-help{font-size:12px;color:var(--lf-muted)}
+.lf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.lf-consent{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--lf-line);border-radius:14px;cursor:pointer;font-size:13px;line-height:1.6}
+.lf-consent input{width:22px;height:22px;margin:1px 0 0;flex-shrink:0;accent-color:var(--lf-deep)}
+.lf-consent a{color:var(--lf-text-pink)}
+
+.lf-error{margin:0;padding:12px 16px;border-radius:12px;background:#fff1f0;color:#8f1d16;font-size:14px;line-height:1.5}
+.lf-error a{color:#8f1d16;font-weight:600}
+.lf-actions{margin-top:auto;display:flex;align-items:center;gap:16px;padding-top:20px;border-top:1px solid var(--lf-line)}
+.lf-hint{font-size:13px;color:var(--lf-muted);margin-right:auto}
+.lf-next{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-height:52px;padding:0 28px;border:0;border-radius:50px;background:var(--lf-deep);color:#fff;font:500 15px/1.2 'Be Vietnam Pro',Arial,sans-serif;text-decoration:none;cursor:pointer;box-shadow:0 9px 25px #d937801f;transition:transform .2s,opacity .2s}
+.lf-next:hover{transform:translateY(-2px)}
+.lf-next:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.lf-next[aria-busy="true"]{opacity:.7;cursor:progress}
+.lf-back{min-height:44px;padding:0 6px;border:0;background:none;color:var(--lf-muted);font:500 15px/1.2 'Be Vietnam Pro',Arial,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.lf-back:hover{color:var(--lf-text-pink)}
+.lf-next:focus-visible,.lf-back:focus-visible,.lf-consent:has(input:focus-visible),.lf-undecided:has(input:focus-visible){outline:2px solid var(--lf-deep);outline-offset:3px}
+.lf-privacy{margin:-8px 0 0;text-align:right;font-size:12px;color:var(--lf-muted)}
+
+.lf-thanks{display:flex;flex-direction:column;gap:16px;outline:none}
+.lf-bloom{width:120px;height:76px;animation:lf-bloom .9s ease-out both}
+@keyframes lf-bloom{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.lf-code{margin:0;font-size:13px;color:var(--lf-muted)}
+.lf-code b{color:var(--lf-ink);letter-spacing:1px}
+.lf-recap{margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.lf-recap span{padding:7px 14px;border-radius:50px;background:var(--lf-tint);color:var(--lf-text-pink);font-size:13px;font-weight:500}
+.lf-next-steps{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:ns}
+.lf-next-steps li{border-top:1px solid var(--lf-line);padding-top:14px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;line-height:1.55;color:var(--lf-muted);counter-increment:ns}
+.lf-next-steps li::before{content:'0' counter(ns);font:italic 400 28px/1 'Playfair Display',Georgia,serif;color:var(--lf-text-pink)}
+.lf-next-steps b{color:var(--lf-ink);font-size:15px;font-weight:600}
+.lf-prepare{padding:16px 18px;border-radius:14px;background:var(--lf-tint);display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--lf-muted)}
+.lf-prepare b{color:var(--lf-ink)}
+.lf-thanks-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.lf-disclaimer{margin:0;font-size:12px;line-height:1.6;color:var(--lf-muted)}
+
+@media (max-width:1060px){
+  .lf-card{grid-template-columns:1fr}
+  .lf-side{min-height:0;height:260px}
+  .lf-side-copy{left:28px;right:28px;bottom:24px;gap:10px}
+  .lf-side h2{font-size:28px}
+  .lf-trust{display:none}
+  .lf-dests{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  .lf-section{padding:56px 0}
+  .lf-card{border-radius:0;border-left:0;border-right:0}
+  .lf-side{height:220px}
+  .lf-side::after{background:linear-gradient(180deg,#5f084540 0%,#5f0845e6 58%)}
+  .lf-hotline{padding-top:10px}
+  .lf-main{padding:24px 18px 28px;gap:20px}
+  .lf-steps{display:none}
+  .lf-q{font-size:28px}
+  .lf-fields{grid-template-columns:1fr;gap:12px}
+  .lf-field-card{flex-direction:row;align-items:center;padding:10px;gap:14px}
+  .lf-field-card img,.lf-fc-mark{width:84px;height:84px;border-radius:12px;flex-shrink:0}
+  .lf-fc-mark img{width:52px}
+  .lf-fc-body{padding:0 34px 0 0}
+  .lf-fc-kicker{display:none}
+  .lf-fc-title{font-size:19px}
+  .lf-tick{top:50%;transform:translateY(-50%);border-color:#e5cbd7;background:#fff}
+  .lf-dest{height:140px}
+  .lf-inputs{grid-template-columns:1fr}
+  .lf-actions{position:sticky;bottom:0;background:#fff;margin:0 -18px -28px;padding:14px 18px calc(18px + env(safe-area-inset-bottom,0px));z-index:5}
+  .lf-hint{display:none}
+  .lf-next{flex-grow:1}
+  .lf-privacy{text-align:center}
+  .lf-next-steps{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.lf-section *{transition:none!important;animation:none!important}}
