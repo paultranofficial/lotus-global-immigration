@@ -6,3 +6,10 @@
 
 /* Hero copy sits inside the curved image edge. */
 .hero-visual .visual-top{left:18%;right:8%;top:44px}.hero-visual .visual-bottom p i{color:#ffd0e5;text-shadow:0 2px 12px #54243e66}@media(max-width:680px){.hero-visual .visual-top{left:20%;right:7%;top:40px;font-size:9px;letter-spacing:1.3px}}
+
+/* T3: keep the existing palette but darken small/supporting text enough for axe CI. */
+:root{--pink:#681139;--muted:#2f2930}
+.eyebrow,.intro em,.section-head em,.career-card small,.career-card button,.route-kicker,.origin small,.route-targets small,.lf-eyebrow,.lf-fc-kicker{color:#681139}
+.intro-grid,.section-head>p,.launch-copy>p:not(.eyebrow),.launch-visual>p,.pathway-note,.route-targets span,.career-card p,.career-note,.steps p,details p,.hero-description,.hero-bottom small{color:#2f2930}
+.field p{opacity:1;color:#2f2930}.field-top>span:first-child,.tags span,.field button,.beauty p,.beauty button,.beauty .tags span{color:#2f2930}
+.career-filters button[aria-pressed=true],.language-switch a[aria-current=true]{background:#9b285d;border-color:#9b285d;color:#fff}
