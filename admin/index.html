@@ -813,9 +813,7 @@ dialog .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;fl
     }).then(function () {
       return gh('/git/commits/' + latest);
     }).then(function (commit) {
-      var pages = LotusRender.renderSite(snapshot);
       var files = [{ path: 'content.json', content: JSON.stringify(snapshot, null, 2) + '\n', encoding: 'utf-8' }];
-      Object.keys(pages).forEach(function (p) { files.push({ path: p, content: pages[p], encoding: 'utf-8' }); });
       uploads.forEach(function (p) { files.push({ path: p, content: pending[p].b64, encoding: 'base64' }); });
       setStatus('busy', 'Đang tải lên ' + files.length + ' tệp…');
       var blobs = [];
@@ -836,8 +834,8 @@ dialog .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;fl
       uploads.forEach(function (p) { delete pending[p]; });
       if (JSON.stringify(content) === JSON.stringify(snapshot)) clearDraft(); else saveDraft();
       refreshDirty(); buildNav();
-      setStatus('busy', 'Đã lưu · website đang cập nhật…');
-      toast('Đã xuất bản! Website cập nhật sau khoảng 1–2 phút. <a href="' + SITE_ROOT + '" target="_blank" rel="noopener">Mở website ↗</a>', false, 12000);
+      setStatus('busy', 'Đã lưu · đang chờ GitHub Pages build…');
+      toast('Đã lưu nội dung! Website sẽ cập nhật sau khi workflow GitHub Pages chạy xong. <a href="' + SITE_ROOT + '" target="_blank" rel="noopener">Mở website ↗</a>', false, 12000);
       watchLive(snapshot);
     }).catch(function (err) {
       if (err.conflict) {
