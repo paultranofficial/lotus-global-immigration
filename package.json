@@ -10,7 +10,8 @@
     "build": "node build.cjs",
     "build:site": "node build.cjs --out _site",
     "build:validator": "node scripts/build-content-validator.cjs",
-    "validate:content": "node scripts/validate-content.cjs"
+    "validate:content": "node scripts/validate-content.cjs",
+    "test": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   },
   "homepage": "https://github.com/paultranofficial/lotus-global-immigration#readme",
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "ajv": "^8.20.0"
   }
 }
