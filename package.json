@@ -1,0 +1,29 @@
+{
+  "name": "lotus-global-immigration",
+  "version": "1.0.0",
+  "description": "Website giới thiệu Lotus Global Immigration: học healthcare và làm đẹp tại Singapore, làm nền tảng hướng tới nghề nghiệp tại Mỹ, Canada và Châu Âu.",
+  "private": true,
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "node build.cjs",
+    "build:site": "node build.cjs --out _site",
+    "build:validator": "node scripts/build-content-validator.cjs",
+    "validate:content": "node scripts/validate-content.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paultranofficial/lotus-global-immigration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/paultranofficial/lotus-global-immigration/issues"
+  },
+  "homepage": "https://github.com/paultranofficial/lotus-global-immigration#readme",
+  "devDependencies": {
+    "ajv": "^8.20.0"
+  }
+}

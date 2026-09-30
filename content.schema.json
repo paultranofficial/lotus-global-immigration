@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.lotusmigrate.com/content.schema.json",
+  "title": "Lotus website content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "_about",
+    "site",
+    "announcement",
+    "nav",
+    "hero",
+    "ribbon",
+    "intro",
+    "launchpad",
+    "fields",
+    "careers",
+    "destinations",
+    "journey",
+    "faq",
+    "footer",
+    "dialog_cta"
+  ],
+  "properties": {
+    "_about": { "type": "string" },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "hotline", "zalo", "logo", "icon"],
+      "properties": {
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "hotline": { "type": "string" },
+        "zalo": { "type": "string" },
+        "logo": { "type": "string" },
+        "icon": { "type": "string" }
+      }
+    },
+    "announcement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "text", "link_label", "link"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "text": { "$ref": "#/$defs/localizedText" },
+        "link_label": { "$ref": "#/$defs/localizedText" },
+        "link": { "type": "string" }
+      }
+    },
+    "nav": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["about", "fields", "careers", "destinations", "journey", "cta"],
+      "properties": {
+        "about": { "$ref": "#/$defs/localizedText" },
+        "fields": { "$ref": "#/$defs/localizedText" },
+        "careers": { "$ref": "#/$defs/localizedText" },
+        "destinations": { "$ref": "#/$defs/localizedText" },
+        "journey": { "$ref": "#/$defs/localizedText" },
+        "cta": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eyebrow",
+        "title",
+        "description",
+        "button",
+        "badge",
+        "places",
+        "image",
+        "image_top",
+        "image_quote",
+        "image_caption"
+      ],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "button": { "$ref": "#/$defs/localizedText" },
+        "badge": { "$ref": "#/$defs/localizedText" },
+        "places": { "$ref": "#/$defs/localizedText" },
+        "image": { "$ref": "#/$defs/image" },
+        "image_top": { "$ref": "#/$defs/localizedText" },
+        "image_quote": { "$ref": "#/$defs/localizedText" },
+        "image_caption": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "ribbon": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/localizedText" }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "paragraphs", "image"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "paragraphs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/localizedText" }
+        },
+        "image": { "$ref": "#/$defs/image" }
+      }
+    },
+    "launchpad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eyebrow",
+        "title",
+        "paragraphs",
+        "button",
+        "route_kicker",
+        "origin_label",
+        "origin",
+        "origin_sub",
+        "targets",
+        "route_caption",
+        "notice",
+        "links_title",
+        "links"
+      ],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "paragraphs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/localizedText" }
+        },
+        "button": { "$ref": "#/$defs/localizedText" },
+        "route_kicker": { "$ref": "#/$defs/localizedText" },
+        "origin_label": { "$ref": "#/$defs/localizedText" },
+        "origin": { "$ref": "#/$defs/localizedText" },
+        "origin_sub": { "$ref": "#/$defs/localizedText" },
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "sub"],
+            "properties": {
+              "name": { "$ref": "#/$defs/localizedText" },
+              "sub": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        },
+        "route_caption": { "$ref": "#/$defs/localizedText" },
+        "notice": { "$ref": "#/$defs/localizedText" },
+        "links_title": { "$ref": "#/$defs/localizedText" },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["label", "url"],
+            "properties": {
+              "label": { "$ref": "#/$defs/localizedText" },
+              "url": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "subtitle", "items"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "subtitle": { "$ref": "#/$defs/localizedText" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/fieldItem" }
+        }
+      }
+    },
+    "careers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "subtitle", "note", "button", "items"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "subtitle": { "$ref": "#/$defs/localizedText" },
+        "note": { "$ref": "#/$defs/localizedText" },
+        "button": { "$ref": "#/$defs/localizedText" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/careerItem" }
+        }
+      }
+    },
+    "destinations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "subtitle", "action", "items"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "subtitle": { "$ref": "#/$defs/localizedText" },
+        "action": { "$ref": "#/$defs/localizedText" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/destinationItem" }
+        }
+      }
+    },
+    "journey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "subtitle", "steps"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "subtitle": { "$ref": "#/$defs/localizedText" },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["title", "text"],
+            "properties": {
+              "title": { "$ref": "#/$defs/localizedText" },
+              "text": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        }
+      }
+    },
+    "faq": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "items"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/localizedText" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["q", "a"],
+            "properties": {
+              "q": { "$ref": "#/$defs/localizedText" },
+              "a": { "$ref": "#/$defs/localizedText" }
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tagline", "copyright", "places"],
+      "properties": {
+        "tagline": { "$ref": "#/$defs/localizedText" },
+        "copyright": { "$ref": "#/$defs/localizedText" },
+        "places": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "dialog_cta": { "$ref": "#/$defs/localizedText" }
+  },
+  "$defs": {
+    "localizedText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vi", "en"],
+      "properties": {
+        "vi": { "type": "string" },
+        "en": { "type": "string" }
+      }
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "alt"],
+      "properties": {
+        "src": { "type": "string" },
+        "alt": { "$ref": "#/$defs/localizedText" }
+      }
+    },
+    "detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "title", "description", "items"],
+      "properties": {
+        "label": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/localizedText" }
+        }
+      }
+    },
+    "fieldItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "theme",
+        "kicker",
+        "symbol",
+        "title",
+        "description",
+        "tags",
+        "button",
+        "image",
+        "image_label",
+        "form_field",
+        "detail"
+      ],
+      "properties": {
+        "key": { "type": "string" },
+        "theme": { "type": "string" },
+        "kicker": { "$ref": "#/$defs/localizedText" },
+        "symbol": { "type": "string" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/localizedText" }
+        },
+        "button": { "$ref": "#/$defs/localizedText" },
+        "image": { "$ref": "#/$defs/image" },
+        "image_label": { "$ref": "#/$defs/localizedText" },
+        "form_field": { "type": "integer" },
+        "detail": { "$ref": "#/$defs/detail" }
+      }
+    },
+    "careerItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group", "kicker", "title", "description", "image"],
+      "properties": {
+        "group": { "type": "string" },
+        "kicker": { "$ref": "#/$defs/localizedText" },
+        "title": { "$ref": "#/$defs/localizedText" },
+        "description": { "$ref": "#/$defs/localizedText" },
+        "image": { "$ref": "#/$defs/image" }
+      }
+    },
+    "destinationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "kicker", "name", "image", "form_value", "detail"],
+      "properties": {
+        "key": { "type": "string" },
+        "kicker": { "$ref": "#/$defs/localizedText" },
+        "name": { "$ref": "#/$defs/localizedText" },
+        "image": { "$ref": "#/$defs/image" },
+        "form_value": { "type": "string" },
+        "detail": { "$ref": "#/$defs/detail" }
+      }
+    }
+  }
+}
