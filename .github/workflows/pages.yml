@@ -25,9 +25,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
       - uses: actions/configure-pages@v5
+      - name: Install dependencies
+        run: npm ci
+      - name: Validate content
+        run: npm run validate:content
+      - name: Build admin content validator
+        run: npm run build:validator
       - name: Build public site
-        run: node build.cjs --out _site
+        run: npm run build:site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

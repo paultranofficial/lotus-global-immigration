@@ -220,6 +220,7 @@ dialog .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;fl
 </dialog>
 
 <script src="../render.js"></script>
+<script src="content-validator.js"></script>
 <script>
 (function () {
   'use strict';
@@ -783,6 +784,13 @@ dialog .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;fl
     content.careers.items.forEach(function (f, i) { if (!(f.title && f.title.vi)) errs.push('Nghề số ' + (i + 1) + ' chưa có tên.'); });
     content.faq.items.forEach(function (f, i) { if (!(f.q && f.q.vi)) errs.push('Câu hỏi số ' + (i + 1) + ' đang trống.'); });
     if (content.announcement.enabled && !content.announcement.text.vi) errs.push('Thanh thông báo đang bật nhưng chưa có nội dung.');
+    if (!window.LotusContentValidator) {
+      errs.push('Không tải được bộ kiểm tra cấu trúc content.schema.json.');
+    } else if (!window.LotusContentValidator.validate(content)) {
+      window.LotusContentValidator.errors().slice(0, 12).forEach(function (e) {
+        errs.push('Schema: ' + e);
+      });
+    }
     return errs;
   }
 
