@@ -7,3 +7,17 @@ services:
       - path: /assets/*
         name: Cache-Control
         value: public, max-age=604800
+
+  - type: web
+    name: onestep-intelligence-engine
+    runtime: python
+    plan: starter
+    rootDir: intelligence-engine
+    buildCommand: "pip install -r requirements.txt && pip install -e ."
+    startCommand: "uvicorn onestep_engine.api:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: ONESTEP_ENGINE_DB
+        value: /opt/render/project/src/intelligence-engine/work/onestep_engine.sqlite

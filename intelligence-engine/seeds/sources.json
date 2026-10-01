@@ -1,0 +1,124 @@
+[
+  {
+    "id": "au-home-affairs-student-500-gs",
+    "title": "Genuine Student requirement",
+    "authority": "Australian Department of Home Affairs",
+    "authority_type": "government_immigration",
+    "jurisdiction": "AU",
+    "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500/genuine-student-requirement",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "ca-ircc-study-permit-financial-support",
+    "title": "Study permit: Proof of financial support",
+    "authority": "Immigration, Refugees and Citizenship Canada",
+    "authority_type": "government_immigration",
+    "jurisdiction": "CA",
+    "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "uk-gov-student-visa-money",
+    "title": "Student visa: Money you need",
+    "authority": "UK Visas and Immigration",
+    "authority_type": "government_immigration",
+    "jurisdiction": "UK",
+    "url": "https://www.gov.uk/student-visa/money",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "sg-ica-student-pass",
+    "title": "Becoming a Student's Pass Holder",
+    "authority": "Immigration & Checkpoints Authority Singapore",
+    "authority_type": "government_immigration",
+    "jurisdiction": "SG",
+    "url": "https://www.ica.gov.sg/reside/STP/",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "my-emgs-student-pass",
+    "title": "International Student Visa Application",
+    "authority": "Education Malaysia Global Services",
+    "authority_type": "official_study_portal",
+    "jurisdiction": "MY",
+    "url": "https://visa.educationmalaysia.gov.my/",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "de-foreign-office-blocked-account",
+    "title": "Opening a blocked bank account for students",
+    "authority": "German Federal Foreign Office",
+    "authority_type": "government_immigration",
+    "jurisdiction": "DE",
+    "url": "https://www.auswaertiges-amt.de/en/visa-service/visabestimmungen-node/sperrkonto-seite",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "fr-campus-france-student-visa",
+    "title": "Guidance for Student Visa Applicants",
+    "authority": "Campus France",
+    "authority_type": "official_study_portal",
+    "jurisdiction": "FR",
+    "url": "https://www.usa.campusfrance.org/guidance-for-student-visa-applicants",
+    "reliability_tier": 2,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "nl-ind-income-study",
+    "title": "Income requirements study",
+    "authority": "Immigration and Naturalisation Service Netherlands",
+    "authority_type": "government_immigration",
+    "jurisdiction": "NL",
+    "url": "https://ind.nl/en/income-requirements-study",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "fi-migri-income-students",
+    "title": "Income requirement for students",
+    "authority": "Finnish Immigration Service",
+    "authority_type": "government_immigration",
+    "jurisdiction": "FI",
+    "url": "https://migri.fi/en/income-requirement-for-students",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "ie-isd-student-finances",
+    "title": "Information on Student Finances",
+    "authority": "Immigration Service Delivery Ireland",
+    "authority_type": "government_immigration",
+    "jurisdiction": "IE",
+    "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/a-fee-paying-private-primary-or-secondary-school/information-on-student-finances/",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  },
+  {
+    "id": "us-study-in-the-states-students",
+    "title": "Students",
+    "authority": "Student and Exchange Visitor Program",
+    "authority_type": "government_immigration",
+    "jurisdiction": "US",
+    "url": "https://studyinthestates.dhs.gov/students",
+    "reliability_tier": 1,
+    "last_verified": "2026-10-01",
+    "status": "active"
+  }
+]
+
