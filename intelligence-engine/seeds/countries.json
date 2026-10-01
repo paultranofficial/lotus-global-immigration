@@ -1,0 +1,14 @@
+[
+  {"code": "AU", "name": "Australia", "region": "Oceania", "priority": 1, "status": "active"},
+  {"code": "US", "name": "United States", "region": "North America", "priority": 1, "status": "active"},
+  {"code": "CA", "name": "Canada", "region": "North America", "priority": 1, "status": "active"},
+  {"code": "SG", "name": "Singapore", "region": "Asia", "priority": 1, "status": "active"},
+  {"code": "MY", "name": "Malaysia", "region": "Asia", "priority": 1, "status": "active"},
+  {"code": "UK", "name": "United Kingdom", "region": "Europe", "priority": 1, "status": "active"},
+  {"code": "DE", "name": "Germany", "region": "Europe", "priority": 1, "status": "active"},
+  {"code": "FR", "name": "France", "region": "Europe", "priority": 1, "status": "active"},
+  {"code": "NL", "name": "Netherlands", "region": "Europe", "priority": 1, "status": "active"},
+  {"code": "FI", "name": "Finland", "region": "Europe", "priority": 1, "status": "active"},
+  {"code": "IE", "name": "Ireland", "region": "Europe", "priority": 1, "status": "active"}
+]
+
