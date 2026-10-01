@@ -34,6 +34,7 @@ class RuleEngineTests(unittest.TestCase):
             jurisdiction="AU",
             applicant_scope="student_visa_primary",
             as_of=date(2026, 10, 1),
+            module="visa",
         )
 
         self.assertEqual(len(matches), 1)
@@ -61,6 +62,19 @@ class RuleEngineTests(unittest.TestCase):
 
         self.assertEqual(len(matches), 1)
         self.assertEqual(matches[0].rule.payload["inside_london_per_month"], 1529)
+
+    def test_finds_new_work_rights_rules(self):
+        matches = find_applicable_rules(
+            self.conn,
+            jurisdiction="CA",
+            applicant_scope="study_permit_primary",
+            as_of=date(2026, 10, 1),
+            module="work_rights",
+        )
+
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0].rule.id, "CA-WORK-OFF-CAMPUS-24H-WEEK")
+        self.assertIn("24 hours", matches[0].rule.payload["limit"])
 
     def test_no_conflict_for_seed_rules(self):
         matches = find_applicable_rules(
