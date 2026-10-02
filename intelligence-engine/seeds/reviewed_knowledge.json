@@ -1,0 +1,86 @@
+[
+  {
+    "id":"AU-GS-REVIEWED-2026-10-02","seed_rule_id":"AU-VISA-GS-2024-03-23",
+    "effective_from":"2024-03-23","effective_date_basis":"authority_effective_date",
+    "summary":"Home Affairs applies Genuine Student to student visa applications lodged from 23 March 2024; earlier applications use GTE. Responses cover personal circumstances, course and provider selection, future benefits and other relevant information, supported by evidence. Each response is limited to 150 English words."
+  },
+  {
+    "id":"UK-FIN-OBSERVED-2026-10-02","seed_rule_id":"UK-FIN-STUDENT-MAINTENANCE-2025-01-02",
+    "summary":"UKVI currently lists monthly student maintenance of GBP 1529 in London or GBP 1171 elsewhere, capped at nine months, plus the CAS course fee. Funds normally need to be held for 28 consecutive days, ending within 31 days of application. Exemptions and dependant funds require separate assessment."
+  },
+  {
+    "id":"CA-WORK-OBSERVED-2026-10-02","seed_rule_id":"CA-WORK-OFF-CAMPUS-24H-WEEK",
+    "summary":"Eligible study permit holders may work off campus for up to 24 hours weekly during regular academic sessions. Scheduled breaks permit unrestricted hours only while all eligibility criteria remain satisfied. A qualifying program normally lasts at least six months and leads to a degree, diploma or certificate. Foreign-employer remote work is treated separately."
+  },
+  {
+    "id":"FI-WORK-REVIEWED-2026-10-02","seed_rule_id":"FI-WORK-STUDENT-30H-AVERAGE",
+    "source_id":"fi-migri-studying","effective_from":"2022-04-15","effective_date_basis":"authority_effective_date",
+    "payload":{"average_hours_per_week":30,"averaging_period":"calendar year","full_time_holidays":"Permitted if annual weekly average stays within 30 hours","credit_bearing_work":"Internship or thesis work agreed in advance to earn degree credits is exempt from the limit"},
+    "summary":"Migri permits student residence permit holders to work an average of 30 hours per week over the year, including full-time holiday work within that average. Internships or thesis work agreed beforehand to carry degree credits are exempt. Migri explicitly extends these rights to permits predating the 15 April 2022 amendments."
+  },
+  {
+    "id":"UK-GRADUATE-OBSERVED-2026-10-02","seed_rule_id":"UK-POST-STUDY-GRADUATE-2026-2027",
+    "effective_to":"2026-12-31",
+    "payload":{"route":"Graduate visa","application_location":"UK","standard_duration_months":24,"doctoral_duration_months":36,"requirements":["current Student or Tier 4 permission","eligible qualification and required UK study period","provider notification of successful completion"],"extendable":false},
+    "summary":"UKVI lists two years for Graduate applications made by 31 December 2026, changing to 18 months for applications from 1 January 2027. Doctoral graduates receive three years. Applicants must be in the UK, hold the relevant student permission and satisfy qualification, study and provider-completion requirements. The visa cannot be extended."
+  },
+  {
+    "id":"UK-GRADUATE-2027-01-01","seed_rule_id":"UK-POST-STUDY-GRADUATE-2026-2027",
+    "effective_from":"2027-01-01","effective_date_basis":"authority_effective_date",
+    "payload":{"route":"Graduate visa","application_location":"UK","standard_duration_months":18,"doctoral_duration_months":36,"requirements":["current Student or Tier 4 permission","eligible qualification and required UK study period","provider notification of successful completion"],"extendable":false},
+    "summary":"UKVI specifies that Graduate visa applications from 1 January 2027 receive 18 months for standard eligible qualifications; doctoral graduates retain three years. Other course, location, permission and provider-completion requirements remain applicable."
+  },
+  {
+    "id":"SG-WORK-OBSERVED-2026-10-02","seed_rule_id":"SG-WORK-STUDENT-PASS-16H-TERM",
+    "summary":"MOM permits term-time work without a work pass only for full-time registered students holding a Student's Pass at listed institutions, limited to 16 hours weekly or a qualifying institution-run graduation-credit internship. Vacation exemptions use a separate institution list and require age 14 or above. Exchange students cannot use this exemption."
+  },
+  {
+    "id":"DE-WORK-OBSERVED-2026-10-02","seed_rule_id":"DE-WORK-STUDENT-140-280",
+    "payload":{"full_days_per_year":140,"half_days_per_year":280,"half_day_max_hours":4,"alternative":"Up to 20 hours weekly in the lecture period; unrestricted work during semester breaks under the stated alternative","student_auxiliary_tasks":"Restrictions do not apply to academic student auxiliary tasks","self_employment":"Requires approval by the competent foreigners authority"},
+    "summary":"The official Make it in Germany portal lists 140 full or 280 half working days annually for third-country students, with four hours defining a half day. It also describes a 20-hour weekly lecture-period alternative and unrestricted semester breaks. Academic auxiliary tasks are treated separately; self-employment requires local foreigners-authority approval."
+  },
+  {
+    "id":"NL-WORK-OBSERVED-2026-10-02","seed_rule_id":"NL-WORK-STUDENT-16H-OR-SUMMER","source_id":"nl-ind-student-higher-education",
+    "summary":"IND states that a student may work as an employee when the employer has a TWV work permit. The student must choose either a maximum of 16 hours weekly or full-time work in June, July and August. IND separately describes rules for self-employment and study progress."
+  },
+  {
+    "id":"IE-FIN-OBSERVED-2026-10-02","seed_rule_id":"IE-FIN-STUDENT-FINANCES-2025-06-30",
+    "payload":{"currency":"EUR","first_academic_year_living_funds":10000,"subsequent_years":"Evidence of access to EUR 10000 for each year, plus course fees","short_course_monthly":833,"short_course_total_cap":6665,"short_course_condition":"Course duration less than 8 months for visa-required nationals","evidence":"Six months of bank statements; sponsor evidence where relevant"},
+    "summary":"ISD requires visa-required students to show access to EUR 10000 for an academic year, with access to that amount plus course fees for subsequent years. For a course shorter than eight months, funds are EUR 833 monthly or EUR 6665, whichever is less. Six-month bank statements and relevant sponsorship evidence are required."
+  },
+  {
+    "id":"UK-ENGLISH-OBSERVED-2026-10-02","source_id":"uk-gov-student-english","module":"english","applicant_scope":"student_visa_primary","rule_type":"english_evidence","title":"Student visa CEFR levels and permitted evidence",
+    "payload":{"degree_level_or_above":"CEFR B2","below_degree":"CEFR B1","higher_education_provider":"May assess degree-level English itself at B2-equivalent standard","evidence_note":"SELT or qualifying education evidence; nationality and prior-evidence exemptions require individual review"},
+    "summary":"UKVI specifies B2-equivalent English for degree-level study or above and B1 below degree level. A higher education provider may assess degree-level applicants itself. Approved SELT or eligible educational qualifications can establish proficiency, subject to the stated exemptions and evidence rules."
+  },
+  {
+    "id":"UK-SKILLED-WORKER-OBSERVED-2026-10-02","source_id":"uk-gov-skilled-worker","module":"immigration","applicant_scope":"skilled_worker_primary","rule_type":"sponsored_work_pathway","title":"Skilled Worker sponsored employment foundation",
+    "payload":{"requirements":["approved UK employer","certificate of sponsorship","eligible occupation","applicable salary requirement","required English evidence"],"salary_threshold":null,"salary_note":"Consult occupation and applicant-specific current tables before any eligibility conclusion"},
+    "summary":"UKVI describes Skilled Worker permission as requiring an approved employer, a certificate of sponsorship, an eligible job, the applicable salary and English requirements. The route can lead to settlement only if its separate conditions are met. Salary calculations and switching restrictions need additional current source records."
+  },
+  {
+    "id":"FI-AALTO-INSTITUTION-2026-10-02","kind":"knowledge","source_id":"fi-aalto-computer-science","module":"institutions","applicant_scope":"international_applicant","rule_type":"institution","title":"Aalto University School of Science",
+    "payload":{"institution_id":"FI-AALTO","name":"Aalto University","school":"School of Science","official_registry_id":null},
+    "summary":"Aalto University School of Science publishes its Computer Science master's study option and official programme contact information. Institutional registry identifiers have not yet been imported."
+  },
+  {
+    "id":"FI-AALTO-CS-PROGRAM-2026-10-02","kind":"knowledge","source_id":"fi-aalto-computer-science","module":"programs","applicant_scope":"international_masters_applicant","rule_type":"program","title":"Aalto Computer Science MSc Technology",
+    "payload":{"institution_id":"FI-AALTO","program_id":"FI-AALTO-CS","credential_level":"masters","duration_months":24,"ects":120,"field_of_study":"Computer Science","tuition_amount":null,"intake_deadline":null},
+    "summary":"Aalto lists Computer Science as a major in its Master's Programme in Computer, Communication and Information Sciences, leading to MSc Technology. The two-year study structure totals 120 ECTS. Intake deadlines and applicant-specific fees must be checked separately."
+  },
+  {
+    "id":"FI-AALTO-MASTERS-ADMISSIONS-2026-10-02","kind":"knowledge","source_id":"fi-aalto-masters-admissions","module":"admissions","applicant_scope":"international_masters_applicant","rule_type":"admission_procedure","title":"Aalto master's admissions procedure",
+    "payload":{"institution_id":"FI-AALTO","procedure":"Apply during the master's application period, submit required degree and language evidence, and satisfy programme-specific evaluation criteria","deadline":null,"minimum_gpa":null,"language_test_scores":null},
+    "summary":"Aalto's official master's admissions page explains application, degree documents, English evidence and programme-specific evaluation. Scholarship requests must be made with the admission application during the application period. A general procedure record does not establish an applicant's admission eligibility."
+  },
+  {
+    "id":"FI-AALTO-EXCELLENCE-2026-10-02","kind":"knowledge","source_id":"fi-aalto-masters-admissions","module":"scholarships","applicant_scope":"international_masters_applicant","rule_type":"scholarship","title":"Aalto University Excellence Scholarship",
+    "payload":{"institution_id":"FI-AALTO","award_type":"tuition fee waiver","living_costs_covered":false,"eligibility":"Fee-paying students; competitive ranking using programme evaluation criteria","application":"Request on the admission form during the application period","deadline":null},
+    "summary":"Aalto offers a very limited number of Excellence Scholarships to tuition-fee-liable admitted applicants. These are tuition waivers and do not fund living expenses. Applicants request the scholarship on the master's application form during the application period, and programmes may award no scholarships."
+  },
+  {
+    "id":"DE-DAAD-EPOS-2026-10-02","kind":"knowledge","source_id":"de-daad-epos","module":"scholarships","applicant_scope":"international_postgraduate_applicant","rule_type":"scholarship","title":"DAAD Development-Related Postgraduate Courses EPOS",
+    "payload":{"eligible_countries":"Refer to DAAD eligible-country list","professional_experience_years_minimum":2,"degree_requirement":"Related bachelor's degree and above-average academic results","course_scope":"Selected development-related postgraduate courses","deadline":"Course-specific; apply directly to the chosen course","award_amount":null},
+    "summary":"DAAD EPOS supports graduates from eligible developing or newly industrialised countries with at least two years of professional experience on selected development-related postgraduate courses. Related academic qualifications, strong performance and development motivation are required. Applications and deadlines are course-specific, with applications submitted directly to the course."
+  }
+]

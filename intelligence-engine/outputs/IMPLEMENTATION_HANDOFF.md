@@ -1,5 +1,7 @@
 # OneStep Education & Migration Intelligence Engine - Implementation Handoff
 
+This Phase 1 handoff is historical. Version 0.2.0 adds authenticated APIs, reviewed retrieval, live ingestion, evidence, snapshots and persistent storage. Use `../docs/AGENT_INTEGRATION.md`, `../docs/RENDER_RUNBOOK.md` and `../docs/POLICY_EDITOR_GUIDE.md` for current operations.
+
 Completed on 2026-10-01.
 
 ## What Was Built
@@ -57,4 +59,3 @@ Implement Phase 2 retrieval ingestion:
 4. Add embeddings.
 5. Route changed policy pages to `policy_changes`.
 6. Require human verification before promoting new active rules.
-

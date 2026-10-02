@@ -1,203 +1,1580 @@
 openapi: 3.1.0
 info:
-  title: OneStep Education & Migration Intelligence Engine API
-  version: 0.1.0
+  title: OneStep Education & Migration Intelligence Engine
+  version: 0.2.0
 paths:
-  /v1/rules/evaluate:
+  /v1/openapi.json:
     get:
-      summary: Evaluate applicable time-versioned policy rules
-      parameters:
-        - name: jurisdiction
-          in: query
-          required: true
-          schema: { type: string, examples: ["AU", "UK", "CA"] }
-        - name: applicant_scope
-          in: query
-          required: true
-          schema: { type: string, examples: ["student_visa_primary"] }
-        - name: as_of
-          in: query
-          required: true
-          schema: { type: string, format: date }
-        - name: module
-          in: query
-          required: false
-          schema:
-            type: string
-            enum: [visa, finance, english, work_rights, post-study, immigration, admissions, scholarships]
+      summary: Contract
+      operationId: contract_v1_openapi_json_get
       responses:
-        "200":
-          description: Applicable rules with provenance
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /v1/countries:
+    get:
+      summary: Countries
+      operationId: countries_v1_countries_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /v1/sources:
+    get:
+      summary: Sources
+      operationId: sources_v1_sources_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: jurisdiction
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Market'
+          - type: 'null'
+          title: Jurisdiction
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RuleEvaluationResponse"
-  /v1/countries:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/rules/evaluate:
     get:
-      summary: List supported study-abroad markets
-      responses:
-        "200":
-          description: Country taxonomy
-  /v1/sources:
-    get:
-      summary: List official and trusted sources
+      summary: Evaluate
+      operationId: evaluate_v1_rules_evaluate_get
+      security:
+      - APIKeyHeader: []
       parameters:
-        - name: jurisdiction
-          in: query
-          required: false
-          schema: { type: string }
+      - name: jurisdiction
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Market'
+      - name: applicant_scope
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Applicant Scope
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      - name: module
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Module'
+          - type: 'null'
+          title: Module
       responses:
-        "200":
-          description: Source registry
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketContextResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/policy/export:
     get:
-      summary: Export policy context for AI agents
+      summary: Policy Export
+      operationId: policy_export_v1_policy_export_get
+      security:
+      - APIKeyHeader: []
       parameters:
-        - name: jurisdiction
-          in: query
-          required: false
-          schema: { type: string }
-        - name: module
-          in: query
-          required: false
-          schema: { type: string }
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      - name: applicant_scope
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Applicant Scope
+      - name: jurisdiction
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Market'
+          - type: 'null'
+          title: Jurisdiction
+      - name: module
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Module'
+          - type: 'null'
+          title: Module
       responses:
-        "200":
-          description: Versioned rules with provenance
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContextResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/agents/context:
     post:
-      summary: Retrieve cited policy context for OneStep AI agents
+      summary: Agent Context
+      operationId: agent_context_v1_agents_context_post
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              type: object
-              required: [jurisdictions, applicant_scope, as_of]
-              properties:
-                jurisdictions:
-                  type: array
-                  items: { type: string }
-                applicant_scope: { type: string }
-                module: { type: string }
-                as_of: { type: string, format: date }
+              $ref: '#/components/schemas/ContextRequest'
+        required: true
       responses:
-        "200":
-          description: Applicable policy context grouped by jurisdiction
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContextResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
   /v1/agents/profile-analysis:
     post:
-      summary: Contract for Profile Analysis Agent
+      summary: Profile Analysis
+      operationId: profile_analysis_v1_agents_profile_analysis_post
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProfileAnalysisRequest"
+              $ref: '#/components/schemas/ProfileRequest'
+        required: true
       responses:
-        "200":
-          description: Profile risk, eligibility and evidence gaps
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
   /v1/agents/proposal:
     post:
-      summary: Contract for Proposal Agent
+      summary: Agent Proposal
+      operationId: agent_proposal_v1_agents_proposal_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/agents/lead:
+    post:
+      summary: Lead
+      operationId: lead_v1_agents_lead_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/retrieval/search:
+    get:
+      summary: Retrieval
+      operationId: retrieval_v1_retrieval_search_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          maxLength: 500
+          title: Q
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      - name: jurisdiction
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Market'
+          - type: 'null'
+          title: Jurisdiction
+      - name: module
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Module'
+          - type: 'null'
+          title: Module
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 30
+          minimum: 1
+          default: 8
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/catalogue/{module}:
+    get:
+      summary: Knowledge
+      operationId: knowledge_v1_catalogue__module__get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: module
+        in: path
+        required: true
+        schema:
+          $ref: '#/components/schemas/Module'
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      - name: jurisdiction
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/Market'
+          - type: 'null'
+          title: Jurisdiction
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/cases/{case_id}/policy-snapshot:
+    post:
+      summary: Freeze
+      operationId: freeze_v1_cases__case_id__policy_snapshot_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: case_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Case Id
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ProposalRequest"
+              $ref: '#/components/schemas/ContextRequest'
       responses:
-        "200":
-          description: Shortlisted countries, programs, pathway options and citations
-  /v1/cases/{case_id}/policy-snapshot:
-    post:
-      summary: Freeze policy snapshot for Case Management Agent
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/cases/{case_id}/policy-snapshots/{snapshot_id}:
+    get:
+      summary: Saved Snapshot
+      operationId: saved_snapshot_v1_cases__case_id__policy_snapshots__snapshot_id__get
+      security:
+      - APIKeyHeader: []
       parameters:
-        - name: case_id
-          in: path
-          required: true
-          schema: { type: string }
+      - name: case_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Case Id
+      - name: snapshot_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Snapshot Id
       responses:
-        "201":
-          description: Immutable cited policy snapshot
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SnapshotResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/cases/{case_id}/policy-snapshots/{snapshot_id}/alerts:
+    get:
+      summary: Alerts
+      operationId: alerts_v1_cases__case_id__policy_snapshots__snapshot_id__alerts_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: case_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Case Id
+      - name: snapshot_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Snapshot Id
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/freshness:
+    get:
+      summary: Source Freshness
+      operationId: source_freshness_v1_freshness_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /v1/admin/evidence:
+    post:
+      summary: Evidence
+      operationId: evidence_v1_admin_evidence_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvidenceRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/admin/rules:
+    post:
+      summary: Publish
+      operationId: publish_v1_admin_rules_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleVersion'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/admin/knowledge:
+    post:
+      summary: Publish Record
+      operationId: publish_record_v1_admin_knowledge_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KnowledgeVersion'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/admin/rules/{rule_id}/retire:
+    post:
+      summary: Retire
+      operationId: retire_v1_admin_rules__rule_id__retire_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: rule_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Rule Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetirementRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/knowledge/{record_id}/retire:
+    post:
+      summary: Retire Record
+      operationId: retire_record_v1_admin_knowledge__record_id__retire_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: record_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Record Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetirementRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/ingestion:
+    post:
+      summary: Crawl
+      operationId: crawl_v1_admin_ingestion_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngestionRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - APIKeyHeader: []
+  /v1/admin/documents:
+    get:
+      summary: Documents
+      operationId: documents_v1_admin_documents_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /v1/admin/documents/{document_id}:
+    get:
+      summary: Document
+      operationId: document_v1_admin_documents__document_id__get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Document Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/documents/{document_id}/approve:
+    post:
+      summary: Approve
+      operationId: approve_v1_admin_documents__document_id__approve_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: document_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Document Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentReview'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/policy-changes:
+    get:
+      summary: Changes
+      operationId: changes_v1_admin_policy_changes_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
+  /v1/admin/policy-changes/{change_id}/review:
+    post:
+      summary: Review
+      operationId: review_v1_admin_policy_changes__change_id__review_post
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: change_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Change Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DecisionRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/draft-context:
+    get:
+      summary: Draft
+      operationId: draft_v1_admin_draft_context_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: jurisdiction
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Market'
+      - name: applicant_scope
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Applicant Scope
+      - name: as_of
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+          title: As Of
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/admin/audit:
+    get:
+      summary: Events
+      operationId: events_v1_admin_audit_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      security:
+      - APIKeyHeader: []
 components:
   schemas:
-    RuleEvaluationResponse:
-      type: object
-      required: [rules, conflicts]
+    AnalysedMarketResponse:
       properties:
+        jurisdiction:
+          type: string
+          title: Jurisdiction
         rules:
-          type: array
           items:
-            type: object
-            required: [rule, citation]
-            properties:
-              rule:
-                $ref: "#/components/schemas/PolicyRule"
-              citation:
-                $ref: "#/components/schemas/Citation"
+            $ref: '#/components/schemas/CitedRuleResponse'
+          type: array
+          title: Rules
         conflicts:
-          type: array
           items:
+            additionalProperties: true
             type: object
-    PolicyRule:
+          type: array
+          title: Conflicts
+        retrieval:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Retrieval
+        pending_source_changes:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Pending Source Changes
+        coverage_status:
+          type: string
+          enum:
+          - partial
+          - insufficient_verified_data
+          title: Coverage Status
+        eligibility:
+          type: string
+          const: requires_assessment
+          title: Eligibility
+        freshness_flags:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Freshness Flags
+        rule_assessments:
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+          title: Rule Assessments
+        evidence_checklist:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Evidence Checklist
+        programs:
+          anyOf:
+          - items:
+              additionalProperties: true
+              type: object
+            type: array
+          - type: 'null'
+          title: Programs
+        scholarships:
+          anyOf:
+          - items:
+              additionalProperties: true
+              type: object
+            type: array
+          - type: 'null'
+          title: Scholarships
+        cost_estimate:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Cost Estimate
+        recommendation_status:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Recommendation Status
       type: object
       required:
-        - id
-        - module
-        - jurisdiction
-        - applicant_scope
-        - title
-        - rule_type
-        - payload
-        - effective_from
-        - source_id
-        - source_url
-        - last_verified
-        - confidence
-        - status
+      - jurisdiction
+      - rules
+      - conflicts
+      - retrieval
+      - pending_source_changes
+      - coverage_status
+      - eligibility
+      - freshness_flags
+      - rule_assessments
+      - evidence_checklist
+      title: AnalysedMarketResponse
+    CitationResponse:
       properties:
-        id: { type: string }
-        module: { type: string }
-        jurisdiction: { type: string }
-        applicant_scope: { type: string }
-        title: { type: string }
-        rule_type: { type: string }
-        payload: { type: object }
-        effective_from: { type: string, format: date }
-        effective_to:
-          type: [string, "null"]
+        source_id:
+          type: string
+          title: Source Id
+        title:
+          type: string
+          title: Title
+        authority:
+          type: string
+          title: Authority
+        url:
+          type: string
+          title: Url
+        last_verified:
+          type: string
           format: date
-        source_id: { type: string }
-        source_url: { type: string, format: uri }
-        last_verified: { type: string, format: date }
-        confidence: { type: number, minimum: 0, maximum: 1 }
-        status: { type: string }
-    Citation:
+          title: Last Verified
+        evidence_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Evidence Id
       type: object
-      required: [source_id, title, authority, url, last_verified]
+      required:
+      - source_id
+      - title
+      - authority
+      - url
+      - last_verified
+      - evidence_id
+      title: CitationResponse
+    CitedRuleResponse:
       properties:
-        source_id: { type: string }
-        title: { type: string }
-        authority: { type: string }
-        url: { type: string, format: uri }
-        last_verified: { type: string, format: date }
-    ProfileAnalysisRequest:
+        rule:
+          $ref: '#/components/schemas/RuleResponse'
+        citation:
+          $ref: '#/components/schemas/CitationResponse'
       type: object
-      required: [profile, target_markets, as_of]
+      required:
+      - rule
+      - citation
+      title: CitedRuleResponse
+    ContextRequest:
+      properties:
+        jurisdictions:
+          items:
+            $ref: '#/components/schemas/Market'
+          type: array
+          maxItems: 11
+          minItems: 1
+          title: Jurisdictions
+        applicant_scope:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Applicant Scope
+        as_of:
+          type: string
+          format: date
+          title: As Of
+        module:
+          anyOf:
+          - $ref: '#/components/schemas/Module'
+          - type: 'null'
+        query:
+          anyOf:
+          - type: string
+            maxLength: 500
+          - type: 'null'
+          title: Query
+      additionalProperties: false
+      type: object
+      required:
+      - jurisdictions
+      - applicant_scope
+      - as_of
+      title: ContextRequest
+    ContextResponse:
+      properties:
+        as_of:
+          type: string
+          format: date
+          title: As Of
+        applicant_scope:
+          type: string
+          title: Applicant Scope
+        module:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Module
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Query
+        results:
+          items:
+            $ref: '#/components/schemas/MarketContextResponse'
+          type: array
+          title: Results
+        advice_status:
+          type: string
+          title: Advice Status
+        retrieval_trust:
+          type: string
+          title: Retrieval Trust
+      type: object
+      required:
+      - as_of
+      - applicant_scope
+      - module
+      - results
+      - advice_status
+      - retrieval_trust
+      title: ContextResponse
+    DecisionRequest:
+      properties:
+        status:
+          type: string
+          enum:
+          - verified
+          - rejected
+          title: Status
+        reason:
+          type: string
+          maxLength: 2000
+          minLength: 10
+          title: Reason
+      additionalProperties: false
+      type: object
+      required:
+      - status
+      - reason
+      title: DecisionRequest
+    DocumentReview:
+      properties:
+        effective_from:
+          type: string
+          format: date
+          title: Effective From
+        effective_to:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Effective To
+      additionalProperties: false
+      type: object
+      required:
+      - effective_from
+      title: DocumentReview
+    EvidenceRequest:
+      properties:
+        source_id:
+          type: string
+          title: Source Id
+        excerpt:
+          type: string
+          maxLength: 20000
+          minLength: 20
+          title: Excerpt
+        observed_at:
+          type: string
+          format: date
+          title: Observed At
+        document_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Document Id
+      additionalProperties: false
+      type: object
+      required:
+      - source_id
+      - excerpt
+      - observed_at
+      title: EvidenceRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    IngestionRequest:
+      properties:
+        source_ids:
+          items:
+            type: string
+          type: array
+          maxItems: 3
+          minItems: 1
+          title: Source Ids
+      additionalProperties: false
+      type: object
+      required:
+      - source_ids
+      title: IngestionRequest
+    KnowledgeVersion:
+      properties:
+        id:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Id
+        rule_key:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Rule Key
+        module:
+          type: string
+          enum:
+          - institutions
+          - programs
+          - admissions
+          - scholarships
+          - english
+          - immigration
+          title: Module
+        jurisdiction:
+          $ref: '#/components/schemas/Market'
+        applicant_scope:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Applicant Scope
+        title:
+          type: string
+          maxLength: 300
+          minLength: 1
+          title: Title
+        rule_type:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Rule Type
+        payload:
+          additionalProperties: true
+          type: object
+          title: Payload
+        effective_from:
+          type: string
+          format: date
+          title: Effective From
+        effective_to:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Effective To
+        source_id:
+          type: string
+          title: Source Id
+        source_url:
+          type: string
+          title: Source Url
+        evidence_id:
+          type: string
+          title: Evidence Id
+        last_verified:
+          type: string
+          format: date
+          title: Last Verified
+        confidence:
+          type: number
+          maximum: 1.0
+          minimum: 0.0
+          title: Confidence
+        effective_date_basis:
+          type: string
+          enum:
+          - authority_effective_date
+          - observed_from
+          title: Effective Date Basis
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - rule_key
+      - module
+      - jurisdiction
+      - applicant_scope
+      - title
+      - rule_type
+      - payload
+      - effective_from
+      - source_id
+      - source_url
+      - evidence_id
+      - last_verified
+      - confidence
+      - effective_date_basis
+      title: KnowledgeVersion
+    LeadResponse:
+      properties:
+        analysis:
+          $ref: '#/components/schemas/ProfileResponse'
+        next_action:
+          type: string
+          enum:
+          - collect_profile
+          - advisor_review
+          title: Next Action
+        proposal:
+          $ref: '#/components/schemas/ProfileResponse'
+      type: object
+      required:
+      - analysis
+      - next_action
+      - proposal
+      title: LeadResponse
+    Market:
+      type: string
+      enum:
+      - AU
+      - US
+      - CA
+      - SG
+      - MY
+      - UK
+      - DE
+      - FR
+      - NL
+      - FI
+      - IE
+      title: Market
+    MarketContextResponse:
+      properties:
+        jurisdiction:
+          type: string
+          title: Jurisdiction
+        rules:
+          items:
+            $ref: '#/components/schemas/CitedRuleResponse'
+          type: array
+          title: Rules
+        conflicts:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Conflicts
+        retrieval:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Retrieval
+        pending_source_changes:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Pending Source Changes
+        coverage_status:
+          type: string
+          enum:
+          - partial
+          - insufficient_verified_data
+          title: Coverage Status
+      type: object
+      required:
+      - jurisdiction
+      - rules
+      - conflicts
+      - retrieval
+      - pending_source_changes
+      - coverage_status
+      title: MarketContextResponse
+    Module:
+      type: string
+      enum:
+      - visa
+      - finance
+      - english
+      - work_rights
+      - post-study
+      - immigration
+      - institutions
+      - programs
+      - admissions
+      - scholarships
+      title: Module
+    ProfileRequest:
       properties:
         profile:
-          type: object
           additionalProperties: true
+          type: object
+          title: Profile
         target_markets:
+          items:
+            $ref: '#/components/schemas/Market'
           type: array
-          items: { type: string }
-        as_of: { type: string, format: date }
-    ProposalRequest:
+          maxItems: 11
+          minItems: 1
+          title: Target Markets
+        as_of:
+          type: string
+          format: date
+          title: As Of
+      additionalProperties: false
       type: object
-      required: [profile_id, preferences, as_of]
+      required:
+      - profile
+      - target_markets
+      - as_of
+      title: ProfileRequest
+    ProfileResponse:
       properties:
-        profile_id: { type: string }
-        preferences:
-          type: object
+        as_of:
+          type: string
+          format: date
+          title: As Of
+        missing_profile_fields:
+          items:
+            type: string
+          type: array
+          title: Missing Profile Fields
+        markets:
+          items:
+            $ref: '#/components/schemas/AnalysedMarketResponse'
+          type: array
+          title: Markets
+        status:
+          type: string
+          title: Status
+        ranking:
+          anyOf:
+          - items:
+              additionalProperties: true
+              type: object
+            type: array
+          - type: 'null'
+          title: Ranking
+      type: object
+      required:
+      - as_of
+      - missing_profile_fields
+      - markets
+      - status
+      title: ProfileResponse
+    RetirementRequest:
+      properties:
+        reason:
+          type: string
+          maxLength: 2000
+          minLength: 10
+          title: Reason
+      additionalProperties: false
+      type: object
+      required:
+      - reason
+      title: RetirementRequest
+    RuleResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        rule_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rule Key
+        module:
+          type: string
+          title: Module
+        jurisdiction:
+          type: string
+          title: Jurisdiction
+        applicant_scope:
+          type: string
+          title: Applicant Scope
+        title:
+          type: string
+          title: Title
+        rule_type:
+          type: string
+          title: Rule Type
+        payload:
           additionalProperties: true
-        as_of: { type: string, format: date }
+          type: object
+          title: Payload
+        effective_from:
+          type: string
+          format: date
+          title: Effective From
+        effective_to:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Effective To
+        effective_date_basis:
+          type: string
+          title: Effective Date Basis
+        source_id:
+          type: string
+          title: Source Id
+        source_url:
+          type: string
+          title: Source Url
+        last_verified:
+          type: string
+          format: date
+          title: Last Verified
+        confidence:
+          type: number
+          title: Confidence
+        status:
+          type: string
+          title: Status
+        reviewed_by:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reviewed By
+      type: object
+      required:
+      - id
+      - rule_key
+      - module
+      - jurisdiction
+      - applicant_scope
+      - title
+      - rule_type
+      - payload
+      - effective_from
+      - effective_to
+      - effective_date_basis
+      - source_id
+      - source_url
+      - last_verified
+      - confidence
+      - status
+      - reviewed_by
+      title: RuleResponse
+    RuleVersion:
+      properties:
+        id:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Id
+        rule_key:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Rule Key
+        module:
+          type: string
+          enum:
+          - visa
+          - finance
+          - english
+          - work_rights
+          - post-study
+          - immigration
+          - admissions
+          - scholarships
+          title: Module
+        jurisdiction:
+          $ref: '#/components/schemas/Market'
+        applicant_scope:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Applicant Scope
+        title:
+          type: string
+          maxLength: 300
+          minLength: 1
+          title: Title
+        rule_type:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Rule Type
+        payload:
+          additionalProperties: true
+          type: object
+          title: Payload
+        effective_from:
+          type: string
+          format: date
+          title: Effective From
+        effective_to:
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+          title: Effective To
+        source_id:
+          type: string
+          title: Source Id
+        source_url:
+          type: string
+          title: Source Url
+        evidence_id:
+          type: string
+          title: Evidence Id
+        last_verified:
+          type: string
+          format: date
+          title: Last Verified
+        confidence:
+          type: number
+          maximum: 1.0
+          minimum: 0.0
+          title: Confidence
+        effective_date_basis:
+          type: string
+          enum:
+          - authority_effective_date
+          - observed_from
+          title: Effective Date Basis
+      additionalProperties: false
+      type: object
+      required:
+      - id
+      - rule_key
+      - module
+      - jurisdiction
+      - applicant_scope
+      - title
+      - rule_type
+      - payload
+      - effective_from
+      - source_id
+      - source_url
+      - evidence_id
+      - last_verified
+      - confidence
+      - effective_date_basis
+      title: RuleVersion
+    SnapshotResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+        case_id:
+          type: string
+          title: Case Id
+        as_of:
+          type: string
+          format: date
+          title: As Of
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        content_hash:
+          type: string
+          title: Content Hash
+        payload:
+          $ref: '#/components/schemas/ContextResponse'
+      type: object
+      required:
+      - id
+      - case_id
+      - as_of
+      - created_at
+      - content_hash
+      - payload
+      title: SnapshotResponse
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

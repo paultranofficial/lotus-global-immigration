@@ -1,13 +1,15 @@
 # Policy Update Operations
 
+The executable version 0.2 workflow is documented in [POLICY_EDITOR_GUIDE.md](POLICY_EDITOR_GUIDE.md), with deployment and backup steps in [RENDER_RUNBOOK.md](RENDER_RUNBOOK.md). Use the reviewer API for mutations, not direct SQL edits.
+
 ## Daily Workflow
 
 1. Review ingestion runs with status `failed` or `completed_with_review`.
 2. Open all `policy_changes` with `needs_human_review`.
 3. Verify against the canonical source URL.
-4. Record the exact `effective_from` date.
-5. Add `effective_to` to superseded rules.
-6. Insert the replacement rule as a new row.
+4. Record the authority's legal effective date, or use `observed_from` if commencement is unknown.
+5. Retain evidence and reviewer identity.
+6. Publish a new rule version; the API closes the previous applicable interval.
 7. Keep the old rule for historical advice and case audits.
 8. Re-run regression tests and sample agent evaluations.
 
@@ -49,4 +51,3 @@ All such values belong in structured tables or versioned retrieval documents.
 - API contract updated if payload shape changed.
 - Case snapshots checked for superseded rules.
 - Human reviewer signed off high-impact changes.
-

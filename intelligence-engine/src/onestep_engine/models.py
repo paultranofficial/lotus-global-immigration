@@ -34,6 +34,9 @@ class PolicyRule:
     last_verified: date
     confidence: float
     status: str
+    rule_key: str | None = None
+    effective_date_basis: str = 'unconfirmed'
+    reviewed_by: str | None = None
 
 
 @dataclass(frozen=True)
@@ -43,10 +46,10 @@ class Citation:
     authority: str
     url: str
     last_verified: date
+    evidence_id: str | None = None
 
 
 @dataclass(frozen=True)
 class RuleMatch:
     rule: PolicyRule
     citation: Citation
-

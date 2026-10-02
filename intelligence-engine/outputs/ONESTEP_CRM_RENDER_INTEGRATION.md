@@ -1,6 +1,8 @@
 # OneStep AI CRM Integration Notes
 
-Target repository: `onestep-ai-crm`.
+Historical Phase 1 notes below are superseded by version 0.2.0. Use [current agent integration](../docs/AGENT_INTEGRATION.md) and [Render deployment runbook](../docs/RENDER_RUNBOOK.md). The old ephemeral database path and unauthenticated endpoint examples below must not be used for deployment.
+
+Engine repository: `paultranofficial/lotus-global-immigration`. The separately hosted CRM backend still needs the adapter installed.
 
 ## Deployment Model
 
@@ -72,4 +74,3 @@ Agents should treat the engine response as grounded context. Any advice shown to
 ## Important Production Note
 
 The current Phase 1 service initializes SQLite on startup. This is fine for a first Render service and deterministic seed data. For production policy review workflows, move the DB to Postgres and preserve immutable case snapshots.
-

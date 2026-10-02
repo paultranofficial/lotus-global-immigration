@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import sqlite3
 from collections.abc import Iterable
 from datetime import date
@@ -19,13 +20,29 @@ def connect(path: str | Path) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA busy_timeout = 10000")
+    conn.execute("PRAGMA journal_mode = WAL")
     return conn
 
 
 def apply_migrations(conn: sqlite3.Connection) -> None:
-    for migration in sorted(MIGRATIONS_DIR.glob("*.sql")):
-        conn.executescript(migration.read_text(encoding="utf-8"))
+    conn.execute("CREATE TABLE IF NOT EXISTS schema_migrations (name TEXT PRIMARY KEY, checksum TEXT NOT NULL)")
     conn.commit()
+    for migration in sorted(MIGRATIONS_DIR.glob("*.sql")):
+        script = migration.read_text(encoding="utf-8")
+        checksum = hashlib.sha256(script.encode()).hexdigest()
+        existing = conn.execute("SELECT checksum FROM schema_migrations WHERE name = ?", (migration.name,)).fetchone()
+        if existing:
+            if existing[0] != checksum:
+                raise ValueError(f"Applied migration changed: {migration.name}")
+            continue
+        try:
+            conn.executescript("BEGIN IMMEDIATE;\n" + script)
+            conn.execute("INSERT INTO schema_migrations VALUES (?, ?)", (migration.name, checksum))
+            conn.commit()
+        except Exception:
+            conn.rollback()
+            raise
 
 
 def load_seed_json(name: str) -> list[dict[str, Any]]:
@@ -34,8 +51,14 @@ def load_seed_json(name: str) -> list[dict[str, Any]]:
 
 def seed_database(conn: sqlite3.Connection) -> None:
     upsert_sources(conn, load_seed_json("sources.json"))
+    upsert_sources(conn, load_seed_json("additional_sources.json"))
     upsert_countries(conn, load_seed_json("countries.json"))
     upsert_rules(conn, load_seed_json("policy_rules.json"))
+    for rule in load_seed_json("policy_rules.json"):
+        conn.execute("INSERT OR IGNORE INTO source_targets(id, source_id, module) VALUES (?, ?, ?)",
+                     (rule["source_id"] + ":" + rule["module"], rule["source_id"], rule["module"]))
+    from .bootstrap import seed_reviewed_knowledge
+    seed_reviewed_knowledge(conn)
     conn.commit()
 
 
@@ -50,15 +73,7 @@ def upsert_sources(conn: sqlite3.Connection, sources: Iterable[dict[str, Any]]) 
             :id, :title, :authority, :authority_type, :jurisdiction, :url,
             :reliability_tier, :last_verified, :status
         )
-        ON CONFLICT(id) DO UPDATE SET
-            title=excluded.title,
-            authority=excluded.authority,
-            authority_type=excluded.authority_type,
-            jurisdiction=excluded.jurisdiction,
-            url=excluded.url,
-            reliability_tier=excluded.reliability_tier,
-            last_verified=excluded.last_verified,
-            status=excluded.status
+        ON CONFLICT(id) DO NOTHING
         """,
         list(sources),
     )
@@ -69,11 +84,7 @@ def upsert_countries(conn: sqlite3.Connection, countries: Iterable[dict[str, Any
         """
         INSERT INTO countries (code, name, region, priority, status)
         VALUES (:code, :name, :region, :priority, :status)
-        ON CONFLICT(code) DO UPDATE SET
-            name=excluded.name,
-            region=excluded.region,
-            priority=excluded.priority,
-            status=excluded.status
+        ON CONFLICT(code) DO NOTHING
         """,
         list(countries),
     )
@@ -84,6 +95,8 @@ def upsert_rules(conn: sqlite3.Connection, rules: Iterable[dict[str, Any]]) -> N
     for rule in rules:
         row = dict(rule)
         row["payload"] = json.dumps(row["payload"], ensure_ascii=True, sort_keys=True)
+        row["status"] = "under_review"
+        row["rule_key"] = ':'.join(row[k] for k in ('jurisdiction', 'applicant_scope', 'module', 'rule_type'))
         normalized.append(row)
 
     conn.executemany(
@@ -91,27 +104,14 @@ def upsert_rules(conn: sqlite3.Connection, rules: Iterable[dict[str, Any]]) -> N
         INSERT INTO policy_rules (
             id, module, jurisdiction, applicant_scope, title, rule_type, payload,
             effective_from, effective_to, source_id, source_url, last_verified,
-            confidence, status
+            confidence, status, rule_key
         )
         VALUES (
             :id, :module, :jurisdiction, :applicant_scope, :title, :rule_type, :payload,
             :effective_from, :effective_to, :source_id, :source_url, :last_verified,
-            :confidence, :status
+            :confidence, :status, :rule_key
         )
-        ON CONFLICT(id) DO UPDATE SET
-            module=excluded.module,
-            jurisdiction=excluded.jurisdiction,
-            applicant_scope=excluded.applicant_scope,
-            title=excluded.title,
-            rule_type=excluded.rule_type,
-            payload=excluded.payload,
-            effective_from=excluded.effective_from,
-            effective_to=excluded.effective_to,
-            source_id=excluded.source_id,
-            source_url=excluded.source_url,
-            last_verified=excluded.last_verified,
-            confidence=excluded.confidence,
-            status=excluded.status
+        ON CONFLICT(id) DO NOTHING
         """,
         normalized,
     )
@@ -153,6 +153,9 @@ def row_to_rule(row: sqlite3.Row) -> PolicyRule:
         last_verified=parse_date(row["last_verified"]) or date.min,
         confidence=row["confidence"],
         status=row["status"],
+        rule_key=row["rule_key"],
+        effective_date_basis=row["effective_date_basis"],
+        reviewed_by=row["reviewed_by"],
     )
 
 
@@ -163,6 +166,7 @@ def row_to_citation(row: sqlite3.Row) -> Citation:
         authority=row["authority"],
         url=row["source_url"],
         last_verified=parse_date(row["source_last_verified"]) or date.min,
+        evidence_id=row["evidence_id"] if "evidence_id" in row.keys() else None,
     )
 
 
@@ -192,7 +196,8 @@ def list_sources(
     rows = conn.execute(
         f"""
         SELECT id, title, authority, authority_type, jurisdiction, url,
-               reliability_tier, last_verified, status
+               reliability_tier, status,
+               (SELECT MAX(e.observed_at) FROM evidence e WHERE e.source_id = sources.id) AS last_verified
         FROM sources
         WHERE status = :status
         {jurisdiction_clause}
