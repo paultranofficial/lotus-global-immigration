@@ -11,13 +11,23 @@ services:
   - type: web
     name: onestep-intelligence-engine
     runtime: python
-    plan: starter
+    plan: 0.5c-512mb
     rootDir: intelligence-engine
     buildCommand: "pip install -r requirements.txt && pip install -e ."
     startCommand: "uvicorn onestep_engine.api:app --host 0.0.0.0 --port $PORT"
     healthCheckPath: /health
+    disk:
+      name: onestep-policy-data
+      mountPath: /var/data
+      sizeGB: 1
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.7
+        value: 3.12.12
       - key: ONESTEP_ENGINE_DB
-        value: /opt/render/project/src/intelligence-engine/work/onestep_engine.sqlite
+        value: /var/data/onestep_engine.sqlite
+      - key: ONESTEP_ENGINE_API_KEY
+        generateValue: true
+      - key: ONESTEP_ENGINE_ADMIN_KEY
+        generateValue: true
+      - key: ONESTEP_ENGINE_INGESTION_ENABLED
+        value: "true"

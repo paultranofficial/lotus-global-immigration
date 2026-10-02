@@ -60,7 +60,9 @@ Rule engine handles time-sensitive filtering:
 - module;
 - `effective_from <= as_of`;
 - `effective_to IS NULL OR effective_to >= as_of`;
-- status in `active` or `under_review`.
+- reviewed evidence and effective-date basis;
+- active or historically superseded status within its effective interval;
+- active canonical source. Drafts are excluded from regular advice.
 
 AI agents must cite both structured rules and retrieval chunks. Generated recommendations without citations should be treated as draft reasoning only.
 
@@ -77,7 +79,7 @@ Responsibilities:
 Required engine calls:
 
 - `/v1/rules/evaluate`
-- RAG search endpoint, to be added in Phase 2
+- `/v1/retrieval/search` (reviewed FTS5/BM25 chunks with citation offsets)
 - policy snapshot endpoint before formal advice is produced
 
 ### Profile Analysis Agent
@@ -140,6 +142,13 @@ Scheduled ingestion should:
 7. Mark high-impact changes as `needs_human_review`.
 8. Only promote to active `policy_rules` after verification.
 
+Implemented runtime details: checksum-tracked SQLite migrations, insert-only bootstrap,
+retained evidence, version publication, independent source-change review, lexical RAG,
+source-target scheduling, typed agent APIs, immutable case snapshots and audit events.
+See `RENDER_RUNBOOK.md` for the single-instance persistent-disk deployment and
+`AGENT_INTEGRATION.md` for the server adapter. Semantic embeddings, PostgreSQL,
+individual reviewer identities and comprehensive institution registry ingestion remain future work.
+
 High-impact examples:
 
 - proof-of-funds amount changes;
@@ -147,4 +156,3 @@ High-impact examples:
 - work-right restrictions;
 - post-study route changes;
 - caps, quotas or prioritization directions.
-

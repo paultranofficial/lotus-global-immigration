@@ -38,7 +38,7 @@ class RuleEngineTests(unittest.TestCase):
         )
 
         self.assertEqual(len(matches), 1)
-        self.assertEqual(matches[0].rule.id, "AU-VISA-GS-2024-03-23")
+        self.assertEqual(matches[0].rule.id, "AU-GS-REVIEWED-2026-10-02")
         self.assertEqual(matches[0].citation.authority, "Australian Department of Home Affairs")
 
     def test_filters_rules_before_effective_date(self):
@@ -56,7 +56,7 @@ class RuleEngineTests(unittest.TestCase):
             self.conn,
             jurisdiction="UK",
             applicant_scope="student_visa_primary",
-            as_of=date(2026, 10, 1),
+            as_of=date(2026, 10, 2),
             module="finance",
         )
 
@@ -68,12 +68,12 @@ class RuleEngineTests(unittest.TestCase):
             self.conn,
             jurisdiction="CA",
             applicant_scope="study_permit_primary",
-            as_of=date(2026, 10, 1),
+            as_of=date(2026, 10, 2),
             module="work_rights",
         )
 
         self.assertEqual(len(matches), 1)
-        self.assertEqual(matches[0].rule.id, "CA-WORK-OFF-CAMPUS-24H-WEEK")
+        self.assertEqual(matches[0].rule.id, "CA-WORK-OBSERVED-2026-10-02")
         self.assertIn("24 hours", matches[0].rule.payload["limit"])
 
     def test_no_conflict_for_seed_rules(self):
